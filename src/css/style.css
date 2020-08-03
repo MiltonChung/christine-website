@@ -59,6 +59,12 @@ img {
 
 /* Container */
 .container {
+  max-width: 45%;
+  margin:auto;
+  overflow: hidden;
+}
+
+.nav-container {
   max-width: 65%;
   margin:auto;
   overflow: hidden;
@@ -107,6 +113,15 @@ img {
   background-position: 0% 60%;
   background-size: cover;
   padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.header-film {
+  background: url("../assets/mountain.jpg") no-repeat;
+  background-position: 0% 60%;
+  background-size: cover;
+  padding: 0.1rem 0 0.1rem 0;
   text-align: center;
   width: 100%;
 }
@@ -225,11 +240,11 @@ img {
 }
 
 .video-player {
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
 }
 
 .video-player h3{
-  margin-top: 1rem;
+  margin-top: 0.2rem;
   margin-bottom:0;
 }
 
