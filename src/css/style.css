@@ -74,6 +74,12 @@ img {
   overflow: hidden;
 }
 
+.collab-container {
+  max-width: 48%;
+  margin:auto;
+  overflow: hidden;
+}
+
 /* Text styles */
 .text-lg {
   font-size: 1.8rem;
@@ -94,6 +100,14 @@ img {
   border-radius: 2px;
   width: 170px;
   border-radius: 10px;
+}
+
+.btn-interview {
+  width: 220px;
+}
+
+.btn-interview:hover {
+  opacity: 0.9;
 }
 
 .btn:hover {
@@ -244,25 +258,25 @@ img {
   margin-top: 0.2rem;
 }
 
-.video-player {
+.video-title {
   margin-top: 0.1rem;
 }
 
-.video-player h3{
+.video-title h3{
   margin-top: 0.2rem;
   margin-bottom:0;
 }
 
-.video-player p {
+.video-title p {
   margin:0;
   font-size: 16px;
 }
 
-.video-player a {
+.video-title a {
   margin-top: 0.2rem;
 }
 
-.video-player p.italicize{
+.video-title p.italicize{
   font-style: italic;
 }
 
