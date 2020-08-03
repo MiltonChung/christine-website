@@ -92,7 +92,7 @@ img {
   cursor: pointer;
   outline:none;
   border-radius: 2px;
-  width: 160px;
+  width: 170px;
   border-radius: 10px;
 }
 
@@ -279,6 +279,7 @@ img {
 
 /* Contacts */
 .contact {
+  margin-top:0.5rem;
   padding-top: 0.3rem;
 }
 
@@ -311,7 +312,7 @@ img {
 }
 
 .icon-contact:hover {
-  background: white;
+  background: rgb(182, 182, 182);
   color:black;
   border-radius: 20px; 
   text-decoration: none;
@@ -320,6 +321,6 @@ img {
 /* Footer */
 .copyright {
   background: white;
-  padding: 0 0 1rem 0;
+  padding: 1rem 0 1rem 0;
   font-size: 16px;
 }
