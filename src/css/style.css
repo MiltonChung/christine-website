@@ -35,6 +35,14 @@ h3 {
   font-size: 2.2rem;
 }
 
+h4 {
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 1.5rem;
+}
+
 a {
   color: black;
   text-decoration: none;
@@ -50,12 +58,6 @@ img {
 
 /* Container */
 .container {
-  max-width: 89%;
-  margin:auto;
-  overflow: hidden;
-}
-
-.nav-container {
   max-width: 70%;
   margin:auto;
   overflow: hidden;
@@ -109,15 +111,7 @@ img {
   transition-duration: 0.3s;
 }
 
-/* Christine Website */
-.fixed-top-header {
-  position: fixed;
-  top: 10%;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-}
-
+/* Header + navbar */
 .header {
   background: url("../assets/mountain.jpg") no-repeat;
   background-position: 0% 60%;
@@ -130,6 +124,7 @@ img {
 #navbar {
   overflow: hidden;
   background-color: rgb(0, 0, 0);
+  z-index: 1;
 }
 
 #navbar a {
@@ -138,8 +133,8 @@ img {
   flex-direction: row;
   color: #f2f2f2;
   text-align: center;
-  padding: 5px 16px;
-  margin: 0.7rem 3rem 0.7rem 0;
+  padding: 6px 18px;
+  margin: 0.45rem 3rem 0.45rem 0;
   text-decoration: none;
   font-size: 20px;
 }
@@ -168,4 +163,112 @@ img {
 
 .sticky + .content {
   padding-top: 60px;
+}
+
+/* Showcase */
+.video-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+  grid-gap: 1.5rem;
+}
+
+.video-showcase a {
+  max-height: 500px;
+  width: 100%;
+}
+
+.video-showcase img {
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+.ind-video .middle {
+  transition: .5s ease;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: inherit;
+  width: 100%;
+  opacity: 0;
+  background: #333;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.ind-video {
+  position: relative;
+}
+
+.ind-video:hover .middle {
+  opacity: .8;
+}
+
+.ind-video:hover .text {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  opacity: 0;
+  font-size: 60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 85%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Contacts */
+.contact {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  background: rgb(226, 226, 226);
+}
+
+.icon-contact-phone {
+  display: flex;
+  height: 4rem;
+  width: 4rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 20px; 
+}
+
+.icon-contact {
+  display: flex;
+  height: 4rem;
+  width: 4rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 20px; 
+}
+
+.icon-contact:hover {
+  background: white;
+  color:black;
+  border-radius: 20px; 
+  text-decoration: none;
+}
+
+/* Footer */
+.copyright {
+  background: rgb(213, 213, 213);
+  padding: 1rem 0;
+  font-size: 20px;
 }
