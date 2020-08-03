@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Times New Roman", Times, serif;
   -webkit-font-smoothing: antialiased;
   background: white;
   color: black;
@@ -21,7 +21,7 @@ ul {
 
 h1, h2, h3, h4, h5, h6 {
   color: black;
-  font-family: "Courier New", Courier, monospace;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -210,6 +210,22 @@ img {
   height: auto;
 }
 
+.video-showcase-collab {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  grid-gap: 1.5rem;
+}
+
+.video-showcase-collab img {
+  width: 100%; /* width of container */
+  height: 450px; /* height of container */
+  object-fit: cover;
+  object-position: 0% 0%; 
+  border-radius: 12px;
+}
+
 .ind-video .middle {
   transition: .5s ease;
   position: absolute;
@@ -217,7 +233,7 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-  height: inherit;
+  height: 100%;
   width: 100%;
   opacity: 0;
   background: #333;
@@ -251,6 +267,10 @@ img {
   text-align: center;
 }
 
+.video-showcase-collab .text {
+  font-size: 40px;
+}
+
 
 /* Video */
 .right-align {
@@ -282,12 +302,12 @@ img {
 
 /* Synopsis */
 .synopsis{
-  font-size: 11pt;
+  font-size: 12pt;
 }
 
 /* Credits */
 .credits li{
-  font-size: 11pt;
+  font-size: 12pt;
 }
 
 
