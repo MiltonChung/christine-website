@@ -74,14 +74,15 @@ img {
 .btn {
   display: inline-block;
   color:white;
-  padding: 0.7rem 0.2rem;
+  padding: 0.54rem 0.2rem;
   font-size: 1rem;
   text-align: center;
   border: none;
   cursor: pointer;
   outline:none;
   border-radius: 2px;
-  width: 150px;
+  width: 140px;
+  border-radius: 10px;
 }
 
 .btn:hover {
@@ -92,20 +93,8 @@ img {
   background: black;
 }
 
-.btn-light {
-  background: white;
-  color: black;
-}
-
-.btn span:hover {
+.btn span:hover{
   border-bottom: 2px white solid;
-  padding-bottom:2px;
-  margin-right:0.5rem;
-  transition-duration: 0.3s;
-}
-
-.btn-light span:hover {
-  border-bottom: 2px black solid;
   padding-bottom:2px;
   margin-right:0.5rem;
   transition-duration: 0.3s;
@@ -226,6 +215,48 @@ img {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+
+/* Video */
+.right-align {
+  text-align: right;
+  margin-top: 0.2rem;
+}
+
+.video-player {
+  margin-top: 0.2rem;
+}
+
+.video-player h2{
+  margin-top: 1rem;
+  margin-bottom:0;
+}
+
+.video-player p {
+  margin:0;
+  font-size: 20px;
+}
+
+.video-player a {
+  margin-top: 0.2rem;
+}
+
+.video-player p.italicize{
+  font-style: italic;
+}
+
+/* Synopsis */
+.synopsis{
+  font-size: 20px;
+  margin-left:1rem
+}
+
+/* Credits */
+.credits li{
+  font-size: 20px;
+  margin-left:1rem;
+}
+
 
 /* Contacts */
 .contact {
