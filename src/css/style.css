@@ -278,8 +278,6 @@ img {
 .contact {
   margin-top: 3rem;
   padding-top: 2rem;
-  padding-bottom: 1rem;
-  background: rgb(226, 226, 226);
 }
 
 .icon-contact-phone {
@@ -315,7 +313,7 @@ img {
 
 /* Footer */
 .copyright {
-  background: rgb(213, 213, 213);
-  padding: 1rem 0;
+  background: white;
+  padding: 0 0 1rem 0;
   font-size: 20px;
 }
