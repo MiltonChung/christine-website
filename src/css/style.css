@@ -219,6 +219,7 @@ img {
 .video-showcase-collab img {
   width: 100%; /* width of container */
   height: 450px; /* height of container */
+  max-height: 400px;
   object-fit: cover;
   object-position: 40% 0%; 
   border-radius: 12px;
