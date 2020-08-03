@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Courier New", Courier, monospace;
   -webkit-font-smoothing: antialiased;
   background: white;
   color: black;
@@ -19,8 +19,9 @@ ul {
   list-style: none;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
   color: black;
+  font-family: "Courier New", Courier, monospace;
 }
 
 h1 {
@@ -81,7 +82,7 @@ img {
   cursor: pointer;
   outline:none;
   border-radius: 2px;
-  width: 140px;
+  width: 160px;
   border-radius: 10px;
 }
 
