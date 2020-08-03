@@ -59,7 +59,7 @@ img {
 
 /* Container */
 .container {
-  max-width: 70%;
+  max-width: 65%;
   margin:auto;
   overflow: hidden;
 }
@@ -228,14 +228,14 @@ img {
   margin-top: 0.2rem;
 }
 
-.video-player h2{
+.video-player h3{
   margin-top: 1rem;
   margin-bottom:0;
 }
 
 .video-player p {
   margin:0;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .video-player a {
@@ -248,13 +248,13 @@ img {
 
 /* Synopsis */
 .synopsis{
-  font-size: 20px;
+  font-size: 16px;
   margin-left:1rem
 }
 
 /* Credits */
 .credits li{
-  font-size: 20px;
+  font-size: 16;
   margin-left:1rem;
 }
 
