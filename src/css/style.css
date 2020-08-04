@@ -271,6 +271,10 @@ img {
   text-align: center;
 }
 
+.text-femex {
+  font-size: 30px;
+}
+
 /* Video */
 .right-align {
   text-align: right;
@@ -307,45 +311,54 @@ img {
 
 
 /* Contacts */
-.contact {
+.contact-me {
   margin-top:0.5rem;
   padding-top: 0.3rem;
-}
-
-.contact .contact-font {
-  font-size:16px;
-}
-
-.icon-contact-phone {
   display: flex;
-  height: 4rem;
-  width: 4rem;
+  flex-direction: row;
   align-items: center;
+  margin-top: 1rem;
+  text-decoration: none !important;
+}
+
+.contact-me a{
   justify-content: center;
-  font-size: 2rem;
-  background-color: #000000;
-  color: #fff;
-  border-radius: 20px; 
+}
+
+.contact-me p {
+  margin-left: 0.7rem;
+  padding-bottom: 0.4rem;
+}
+
+.contact-me:hover .icon-contact{
+  background: rgb(182, 182, 182);
+  color:black;
+  transition-duration: 0.4s;
+}
+
+.contact-me:hover .contact-text{
+  color:black;
+  font-size: 1.38rem;
+  transition-duration: 0.6s;
 }
 
 .icon-contact {
   display: flex;
-  height: 4rem;
-  width: 4rem;
+  height: 3.5rem;
+  width: 3.5rem;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   background-color: #000000;
   color: #fff;
-  border-radius: 20px; 
 }
 
-.icon-contact:hover {
+/* .icon-contact:hover {
   background: rgb(182, 182, 182);
   color:black;
-  border-radius: 20px; 
   text-decoration: none;
-}
+  transition-duration: 0.4s;
+} */
 
 /* Footer */
 .copyright {
