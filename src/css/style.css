@@ -71,8 +71,8 @@ img {
   overflow: hidden;
 }
 
-.nav-container {
-  max-width: 65%;
+.name-container {
+  max-width: 69%;
   margin:auto;
   overflow: hidden;
 }
@@ -94,6 +94,18 @@ img {
 
 .text-sm {
   font-size: 0.9rem;
+}
+
+.text-md {
+  font-size: 1.1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.line-height-sm {
+  line-height: 0.6;
 }
 
 /* Buttons */
@@ -198,7 +210,7 @@ img {
 .video-showcase {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin: 4rem 2rem 2rem 2rem;
+  margin: 2rem 2rem 2rem 2rem;
   grid-gap: 1.5rem;
 }
 
@@ -209,9 +221,14 @@ img {
   height: auto;
 }
 
-.video-showcase p {
+.video-showcase .film-title {
   text-align: center;
   font-style: italic;
+}
+
+.video-showcase .collab-title {
+  text-align: center;
+  font-weight: 600;
 }
 
 .middle {
