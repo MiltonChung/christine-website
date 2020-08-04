@@ -71,16 +71,46 @@ img {
   overflow: hidden;
 }
 
-.name-container {
-  max-width: 69%;
-  margin:auto;
-  overflow: hidden;
+@media(max-width: 1536px){
+  .container {
+    max-width: 50%;
+  }
 }
 
-.collab-container {
-  max-width: 48%;
-  margin:auto;
-  overflow: hidden;
+@media(max-width: 1350px){
+  .container {
+    max-width: 60%;
+  }
+}
+
+@media(max-width: 1150px){
+  .container {
+    max-width: 67%;
+  }
+}
+
+@media(max-width: 1024px){
+  .container {
+    max-width: 75%;
+  }
+}
+
+@media(max-width: 915px){
+  .container {
+    max-width: 84%;
+  }
+}
+
+@media(max-width: 768px){
+  .container {
+    max-width: 90%;
+  }
+}
+
+@media(max-width: 600px){
+  .container {
+    max-width: 100%;
+  }
 }
 
 /* Text styles */
@@ -97,7 +127,7 @@ img {
 }
 
 .text-md {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .text-center {
@@ -107,6 +137,63 @@ img {
 .line-height-sm {
   line-height: 0.6;
 }
+
+@media(max-width:915px){
+  .line-height-sm {
+    line-height: 0.7;
+  }
+
+  .text-sm {
+    font-size: 0.8rem;
+  }
+
+  .text-md {
+    font-size: 1rem;
+  }
+}
+
+@media(max-width:768px){
+  .line-height-sm {
+    line-height: 0.5;
+  }
+
+  .text-sm {
+    font-size: 0.9rem;
+  }
+
+  .text-md {
+    font-size: 1.2rem;
+  }
+}
+
+@media(max-width:600px){
+  .line-height-sm {
+    line-height: 0.5;
+  }
+
+  .text-sm {
+    font-size: 0.7rem;
+  }
+
+  .text-md {
+    font-size: 0.9rem;
+  }
+}
+
+@media(max-width:425px){
+  .line-height-sm {
+    line-height: 0.5;
+  }
+
+  .text-sm {
+    font-size: 0.65rem;
+  }
+
+  .text-md {
+    font-size: 0.85rem;
+  }
+}
+
 
 /* Buttons */
 .btn {
@@ -121,14 +208,6 @@ img {
   border-radius: 2px;
   width: 150px;
   border-radius: 10px;
-}
-
-.btn-interview {
-  width: 240px;
-}
-
-.btn-interview:hover {
-  opacity: 0.9;
 }
 
 .btn:hover {
@@ -192,19 +271,37 @@ img {
   border-radius: 5px;
 }
 
-.content {
-  padding: 16px;
+@media(max-width: 768px){
+  #navbar a {
+    padding: 5px 12px;
+    margin: 0.45rem 0.2rem 0.45rem 0;
+  }
 }
 
-/* .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+@media(max-width: 500px){
+  #navbar a {
+    padding: 5px 12px;
+    margin: 0.45rem 0.1rem 0.45rem 0;
+  }
+
+  #navbar ul li {
+    padding: 15px 0px;
+    width: 17%;
+  }
 }
 
-.sticky + .content {
-  padding-top: 60px;
-} */
+@media(max-width: 425px){
+  #navbar a {
+    padding: 1px 5px;
+    margin: 0.45rem 0rem 0.45rem 0;
+  }
+}
+
+@media(max-width: 375px){
+  .header{
+    font-size: 42px;
+  }
+}
 
 /* Showcase */
 .video-showcase {
@@ -226,13 +323,8 @@ img {
   font-style: italic;
 }
 
-.video-showcase .collab-title {
-  text-align: center;
-  font-weight: 600;
-}
-
 .middle {
-  transition: .5s ease;
+  transition: .6s ease;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -264,7 +356,7 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 85%;
+  width: 90%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -272,7 +364,41 @@ img {
 }
 
 .text-femex {
-  font-size: 30px;
+  font-size: 25px;
+}
+
+@media(max-width: 768px){
+  .video-showcase {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 0rem;
+    grid-gap: 0rem;
+  }
+
+  .video-showcase .film-title {
+    font-size: 20px;
+    margin-bottom: 2rem;
+  }
+
+  .text-femex {
+    font-size: 40px;
+  }
+}
+
+@media(max-width: 500px){
+  .text-femex {
+    font-size: 30px;
+  }
+}
+
+@media(max-width: 375px){
+  .video-showcase .film-title {
+    font-size: 15px;
+  }
+
+  .text-femex {
+    font-size: 20px;
+  }
 }
 
 /* Video */
@@ -353,16 +479,33 @@ img {
   color: #fff;
 }
 
-/* .icon-contact:hover {
-  background: rgb(182, 182, 182);
-  color:black;
-  text-decoration: none;
-  transition-duration: 0.4s;
-} */
+@media(max-width: 425px){
+  .icon-contact {
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 1.5rem;
+  }
+}
 
-/* Footer */
-.copyright {
-  background: white;
-  padding: 1rem 0 1rem 0;
-  font-size: 16px;
+@media(max-width: 374px){
+  .icon-contact {
+    height: 1rem;
+    width: 1rem;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+  }
+
+  .contact-me:hover .icon-contact{
+    background: white;
+    color:black;
+    transition-duration: 0s;
+  }
+
+  .contact-me:hover .contact-text{
+    color:black;
+    font-size: 1.25rem;
+    text-decoration: underline black;
+    transition-duration: 0.2s;
+  }
 }
