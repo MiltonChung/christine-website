@@ -1,11 +1,9 @@
-:root {
-  --font-family: Baskerville, Baskerville Old Face, Hoefler Text, Garamond,
-    Times New Roman, serif;
-}
+$font-family: Baskerville, Baskerville Old Face, Hoefler Text, Garamond,
+  Times New Roman, serif;
 
 body {
-  font-family: var(--font-family);
-  color: var(--colors-black);
+  font-family: $font-family;
+  color: $colors-text;
 }
 
 h1,
@@ -17,9 +15,8 @@ h6 {
   font-weight: 100;
   margin: 0;
   padding: 0;
-  color: black;
-  font-family: Baskerville, Baskerville Old Face, Hoefler Text, Garamond,
-    Times New Roman, serif;
+  color: $colors-text;
+  font-family: $font-family;
 }
 
 h1 {
@@ -47,10 +44,6 @@ h6 {
 }
 
 a {
-  color: black;
+  color: $colors-text;
   text-decoration: none;
-}
-
-p {
-  margin: 0.5rem 0;
 }

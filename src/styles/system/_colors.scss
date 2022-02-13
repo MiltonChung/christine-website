@@ -1,5 +1,10 @@
-:root {
-  --colors-text: ;
-  --colors-black: #000000;
-  --colors-white: #ffffff;
-}
+$colors-text: rgb(42, 42, 42);
+
+$colors-black: #000000;
+$colors-white: #ffffff;
+$colors-orange: #ff7b01;
+$colors-dark-gray: #27292b;
+$colors-dark-purple: rgb(55, 48, 163);
+
+$colors-dark-bg: rgb(24, 24, 27);
+$colors-light-bg: hsla(219, 83%, 92%, 100%);
