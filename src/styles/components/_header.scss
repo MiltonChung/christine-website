@@ -1,13 +1,16 @@
 header {
-  max-width: 85ch;
-  margin: 0 auto;
-
-  h1 {
-    margin-top: 1rem;
-    font-weight: bold;
-    line-height: 2.5rem;
+  .profile-photo {
+    img {
+    }
   }
-  h5 {
-    margin-left: 0.25rem;
+  .header-info {
+    h1 {
+      margin-top: 1rem;
+      font-weight: bold;
+      line-height: 2.5rem;
+    }
+    h5 {
+      margin-left: 0.25rem;
+    }
   }
 }

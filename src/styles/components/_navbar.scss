@@ -1,5 +1,53 @@
 nav {
+  font-size: 20px;
+  margin: 1.5rem 0;
+  font-weight: 500;
+
+  ul.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      text-align: center;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      height: 2rem;
+
+      a {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        padding: 6px 20px;
+        text-decoration: none;
+        letter-spacing: 1px;
+
+        &:hover {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
   .selected {
-    color: $colors-dark-purple;
+    background-color: rgba(20, 19, 19, 0.781);
+    color: $colors-white;
+    border-radius: 5px;
+  }
+
+  @media (max-width: $screen-sm) {
+    font-size: 16px;
+
+    ul.nav-container {
+      li {
+        a {
+          padding: 4px 8px;
+        }
+      }
+    }
   }
 }

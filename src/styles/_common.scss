@@ -23,3 +23,17 @@ $screen-xl: 1280px;
 body {
   background-color: $colors-light-bg;
 }
+
+.app {
+  max-width: 85ch;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+
+  @media (max-width: $screen-md) {
+    max-width: 73ch;
+  }
+
+  @media (max-width: $screen-sm) {
+    max-width: 68ch;
+  }
+}

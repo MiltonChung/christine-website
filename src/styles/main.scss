@@ -1,8 +1,13 @@
+// Design System
 @import "./system/resets";
 @import "./system/colors";
 @import "./system/text";
 @import "./system/button";
 @import "./common";
 
+// Components
 @import "./components/header";
-@import "./components//navbar";
+@import "./components/navbar";
+
+// Pages
+@import "./pages/home";

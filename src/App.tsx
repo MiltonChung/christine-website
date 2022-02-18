@@ -1,7 +1,8 @@
 import React from "react";
 import { Header } from "./components/Header";
 import { Navbar } from "./components/Navbar";
-// import { Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
 // import sanityClient from "./lib/sanity";
 // import { useAsync } from "./hooks/useAsync";
 
@@ -28,13 +29,12 @@ const App = () => {
     <div className="app">
       <Header />
       <Navbar />
-      {/* <Navbar />
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Switch>
-        <Route path="/about">
-          <About aboutInfo={aboutInfo} />
+        <Route path="/" exact>
+          <Home />
         </Route>
-        <Route path="/books">
+        {/* <Route path="/books">
           <Books books={books} />
         </Route>
         <Route path="/updates">
@@ -45,9 +45,9 @@ const App = () => {
         </Route>
         <Route path="/">
           <Home books={books} intro={intro} />
-        </Route>
+        </Route> */}
       </Switch>
-      <Footer /> */}
+      {/* <Footer /> */}
     </div>
   );
 };
