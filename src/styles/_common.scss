@@ -1,3 +1,4 @@
+$screen-2xs: 380px;
 $screen-xs: 420px;
 $screen-sm: 640px;
 $screen-md: 768px;
@@ -22,6 +23,7 @@ $screen-xl: 1280px;
 
 body {
   background-color: $colors-light-bg;
+  font-size: 16px;
 }
 
 .app {
@@ -36,4 +38,8 @@ body {
   @media (max-width: $screen-sm) {
     max-width: 68ch;
   }
+}
+
+main {
+  margin-bottom: 2rem;
 }

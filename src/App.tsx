@@ -3,6 +3,8 @@ import { Header } from "./components/Header";
 import { Navbar } from "./components/Navbar";
 import { Switch, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
+import { Films } from "./pages/Films";
+import { Film } from "./components/Film";
 // import sanityClient from "./lib/sanity";
 // import { useAsync } from "./hooks/useAsync";
 
@@ -34,16 +36,18 @@ const App = () => {
         <Route path="/" exact>
           <Home />
         </Route>
-        {/* <Route path="/books">
-          <Books books={books} />
+        <Route path="/films" exact>
+          <Films />
         </Route>
-        <Route path="/updates">
+        <Route path="/films/:id" component={Film} />
+
+        {/* <Route path="/updates">
           <Updates />
-        </Route>
-        <Route path="/contact">
+        </Route> */}
+        {/* <Route path="/contact">
           <Contact />
-        </Route>
-        <Route path="/">
+        </Route> */}
+        {/* <Route path="/">
           <Home books={books} intro={intro} />
         </Route> */}
       </Switch>

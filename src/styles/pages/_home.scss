@@ -1,8 +1,21 @@
 main#home {
   width: 100%;
+  margin-top: 3rem;
 
   img.home-landing {
     width: 100%;
     height: auto;
+  }
+
+  .home-intro {
+    h2.home-section__title {
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    p.home-section__body {
+      font-size: 19px;
+      margin: 1rem 0;
+    }
   }
 }
