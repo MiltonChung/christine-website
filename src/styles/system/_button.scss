@@ -74,3 +74,17 @@
     mask-position: 0 0;
   }
 }
+
+.link-button {
+  background: $colors-light-gray;
+  padding: 0.6rem 1.4rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  color: $colors-white;
+  font-weight: 700;
+  letter-spacing: 1px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

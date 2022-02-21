@@ -34,7 +34,7 @@ nav {
   }
 
   .selected {
-    background-color: rgba(20, 19, 19, 0.781);
+    background-color: $colors-light-gray;
     color: $colors-white;
     border-radius: 5px;
   }

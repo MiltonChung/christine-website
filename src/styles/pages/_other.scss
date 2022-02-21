@@ -1,0 +1,48 @@
+main#other {
+  .collaborations-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    .collaboration {
+      display: flex;
+      gap: 1rem;
+
+      .left-pane {
+        flex: 2;
+      }
+
+      .right-pane {
+        flex: 3;
+        position: relative;
+        margin-top: -0.4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .img-horizontal-line {
+          height: 5px;
+          width: 200px;
+          background: $colors-collab-accent;
+        }
+
+        p:nth-child(3) {
+          margin-top: 1rem;
+        }
+
+        .collab-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: $colors-collab-accent;
+
+          svg {
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+    }
+  }
+}

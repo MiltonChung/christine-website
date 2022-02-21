@@ -17,7 +17,7 @@ const Film: FComponent<FilmProps> = ({ match }) => {
         <p>Director, Writer, Editor, Cinematographer</p>
       </div>
 
-      <a href="https://vimeo.com/429805601">
+      <a href="https://vimeo.com/429805601" className="film-link">
         <div className="mask-button">
           <span className="mask">Watch film</span>
           <button id="work" type="button">

@@ -11,6 +11,10 @@ main#film {
     }
   }
 
+  .film-link {
+    display: inline-flex;
+  }
+
   .vimeo-video-container {
     padding-top: 56.25%;
     position: relative;
