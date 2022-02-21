@@ -20,32 +20,35 @@ const Films = () => {
           <p className="film-caption">Why are you crying? (2019)</p>
         </div>
 
-        <Link className="film" to="/films/2">
-          <img
-            className="film-img"
-            src={WhyAreYouCrying}
-            alt="Why are you crying"
-          />
+        <div className="film">
+          <Link className="film-img" to="/films/2">
+            <img src={WhyAreYouCrying} alt="" />
+            <div className="overlay">
+              <span>Why are you crying?</span>
+            </div>
+          </Link>
           <p className="film-caption">Why are you crying? (2019)</p>
-        </Link>
+        </div>
 
-        <Link className="film" to="/films/3">
-          <img
-            className="film-img"
-            src={WhyAreYouCrying}
-            alt="Why are you crying"
-          />
+        <div className="film">
+          <Link className="film-img" to="/films/3">
+            <img src={WhyAreYouCrying} alt="" />
+            <div className="overlay">
+              <span>Why are you crying?</span>
+            </div>
+          </Link>
           <p className="film-caption">Why are you crying? (2019)</p>
-        </Link>
+        </div>
 
-        <Link className="film" to="/films/4">
-          <img
-            className="film-img"
-            src={WhyAreYouCrying}
-            alt="Why are you crying"
-          />
+        <div className="film">
+          <Link className="film-img" to="/films/4">
+            <img src={WhyAreYouCrying} alt="" />
+            <div className="overlay">
+              <span>Why are you crying?</span>
+            </div>
+          </Link>
           <p className="film-caption">Why are you crying? (2019)</p>
-        </Link>
+        </div>
       </div>
     </main>
   );

@@ -43,3 +43,15 @@ body {
 main {
   margin-bottom: 2rem;
 }
+
+.horizontal-line {
+  height: 1px;
+  width: 100%;
+  background: $colors-horizontal-line;
+  margin: 1rem 0;
+}
+
+img {
+  border-radius: 5px;
+  overflow: hidden;
+}

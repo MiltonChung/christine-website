@@ -1,0 +1,36 @@
+main#film {
+  .film-info {
+    margin-bottom: 0.5rem;
+
+    h2 {
+      line-height: 40px;
+    }
+
+    p:last-child {
+      font-style: italic;
+    }
+  }
+
+  .vimeo-video-container {
+    padding-top: 56.25%;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .trigger-warning p {
+    text-align: right;
+    margin-top: 0.1rem;
+    font-size: 14px;
+    color: $colors-text-muted;
+  }
+
+  .film-text {
+    h3 {
+      font-weight: 600;
+    }
+    span {
+      font-weight: 600;
+    }
+  }
+}

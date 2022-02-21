@@ -1,0 +1,76 @@
+@mixin button($bcolor, $url, $x1, $y1, $bor, $col) {
+  background: $bcolor;
+  mask: url($url);
+  mask-size: $x1 $y1;
+  border: $bor;
+  color: $col;
+}
+
+.mask-button {
+  position: relative;
+  width: 135px;
+  height: 40px;
+  overflow: hidden;
+  border: 1px solid;
+  font-weight: 500;
+  font-size: 16px;
+  transition: 0.5s;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  border: $colors-dark-purple solid 1px;
+
+  .mask {
+    position: absolute;
+    color: $colors-black;
+    text-align: center;
+    width: 101%;
+    margin-top: 7px;
+    overflow: hidden;
+    letter-spacing: 1px;
+  }
+
+  button {
+    width: 101%;
+    height: 100%;
+    letter-spacing: 1px;
+
+    @include button(
+      $colors-dark-gray,
+      "https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png",
+      2300%,
+      100%,
+      none,
+      $colors-white
+    );
+    cursor: pointer;
+    animation: ani2 0.7s steps(22) forwards;
+
+    &:hover {
+      animation: ani 0.7s steps(22) forwards;
+    }
+  }
+}
+
+@keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+@keyframes ani2 {
+  from {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+
+  to {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+}
