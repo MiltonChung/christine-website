@@ -15,7 +15,6 @@ const Other = () => {
           <div className="right-pane">
             <div className="collaboration-info">
               <h4>WWW (Women's World War)</h4>
-              <div className="img-horizontal-line" />
               <p>Interview with Anita Chang</p>
               <p>regarding experimental and feminist filmmaking</p>
             </div>
@@ -38,7 +37,6 @@ const Other = () => {
           <div className="right-pane">
             <div className="collaboration-info">
               <h4>WWW (Women's World War)</h4>
-              <div className="img-horizontal-line" />
               <p>Interview with Anita Chang</p>
               <p>regarding experimental and feminist filmmaking</p>
             </div>
@@ -61,7 +59,6 @@ const Other = () => {
           <div className="right-pane">
             <div className="collaboration-info">
               <h4>WWW (Women's World War)</h4>
-              <div className="img-horizontal-line" />
               <p>Interview with Anita Chang</p>
               <p>regarding experimental and feminist filmmaking</p>
             </div>
@@ -84,7 +81,6 @@ const Other = () => {
           <div className="right-pane">
             <div className="collaboration-info">
               <h4>WWW (Women's World War)</h4>
-              <div className="img-horizontal-line" />
               <p>Interview with Anita Chang</p>
               <p>regarding experimental and feminist filmmaking</p>
             </div>

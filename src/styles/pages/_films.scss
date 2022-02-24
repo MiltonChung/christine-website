@@ -4,9 +4,9 @@ main#films {
   }
 
   .films-showcase {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     .film {
       display: flex;
@@ -16,9 +16,13 @@ main#films {
 
       &-img {
         width: 100%;
-        height: 230px;
+        height: auto;
+        max-height: 450px;
+        object-fit: fill;
         position: relative;
         overflow: hidden;
+        box-shadow: 0 3px 10px 3px rgba(80, 80, 80, 0.329);
+        border-radius: 5px;
 
         img {
           transition: transform 0.8s ease;
@@ -27,41 +31,20 @@ main#films {
         &:hover img {
           transform: scale(1.1);
         }
-
-        &:hover .overlay {
-          opacity: 1;
-          transform: scale(1);
-        }
-
-        .overlay {
-          position: absolute;
-          background-color: #353a4285;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          transform: scale(1.3);
-          opacity: 0;
-          transition: transform 0.4s ease 0s;
-
-          span {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-weight: bold;
-            font-size: 25px;
-            color: $colors-white;
-            width: 100%;
-            text-align: center;
-            font-family: Sans-serif;
-          }
-        }
       }
 
-      &-caption {
-        text-align: center;
-        font-style: italic;
-        margin-top: 0.5rem;
+      &-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+
+        .film-caption {
+          text-align: center;
+          font-style: italic;
+          font-size: 35px;
+        }
       }
     }
   }

@@ -10,6 +10,9 @@ main#other {
 
       .left-pane {
         flex: 2;
+        img {
+          box-shadow: 3px 3px 10px 2px rgba(68, 68, 68, 0.452);
+        }
       }
 
       .right-pane {
@@ -21,14 +24,8 @@ main#other {
         justify-content: space-between;
         align-items: flex-start;
 
-        .img-horizontal-line {
-          height: 5px;
-          width: 200px;
-          background: $colors-collab-accent;
-        }
-
-        p:nth-child(3) {
-          margin-top: 1rem;
+        h4 {
+          font-weight: bold;
         }
 
         .collab-btn {
