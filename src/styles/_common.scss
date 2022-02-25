@@ -26,22 +26,46 @@ body {
   font-size: 16px;
 }
 
-.app {
+main {
+  margin-bottom: 2rem;
   max-width: 100ch;
   margin: 0 auto;
-  padding: 0 0.5rem;
+  padding: 0 2rem;
 
   @media (max-width: $screen-md) {
     max-width: 73ch;
+    padding: 0 0.5rem;
   }
 
   @media (max-width: $screen-sm) {
     max-width: 68ch;
+    padding: 0 0.5rem;
   }
 }
 
-main {
-  margin-bottom: 2rem;
+.top {
+  max-width: 170ch;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: 935px) {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  @media (max-width: $screen-md) {
+    max-width: 150ch;
+    padding: 0 0.5rem;
+  }
+
+  @media (max-width: $screen-sm) {
+    max-width: 130ch;
+  }
 }
 
 .horizontal-line {

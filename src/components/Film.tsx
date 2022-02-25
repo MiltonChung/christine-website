@@ -12,7 +12,7 @@ const Film: FComponent<FilmProps> = ({ match }) => {
   return (
     <main id="film">
       <div className="film-info">
-        <h2>Why Are You Crying? {match.params.id}</h2>
+        <h3>Why Are You Crying? {match.params.id}</h3>
         <p>13 min. Experimental Documentary. 2020.</p>
         <p>Director, Writer, Editor, Cinematographer</p>
       </div>

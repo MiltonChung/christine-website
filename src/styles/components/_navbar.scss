@@ -22,32 +22,50 @@ nav {
         display: flex;
         flex-direction: row;
         text-align: center;
-        padding: 6px 20px;
+        margin: 0 10px;
         text-decoration: none;
-        letter-spacing: 1px;
+        font-weight: 400;
+        transition: all 0.2s ease;
 
         &:hover {
-          font-weight: 700;
+          padding-bottom: 5px;
+          border-bottom: 2px solid gray;
+
+          @media (max-width: 935px) {
+            border-bottom: unset;
+          }
+        }
+
+        &.selected {
+          font-weight: 600;
+          border-bottom: 2px solid gray;
+
+          @media (max-width: 935px) {
+            border-bottom: unset;
+          }
         }
       }
     }
   }
 
-  .selected {
-    background-color: $colors-light-gray;
-    color: $colors-white;
-    border-radius: 5px;
+  @media (max-width: 935px) {
+    width: 100%;
+    font-size: 22px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+
+    ul.nav-container li a {
+      margin: 0 5px;
+    }
   }
 
   @media (max-width: $screen-sm) {
-    font-size: 16px;
+    font-size: 19px;
+  }
 
-    ul.nav-container {
-      li {
-        a {
-          padding: 4px 8px;
-        }
-      }
+  @media (max-width: $screen-xs) {
+    ul.nav-container li a {
+      font-size: 16px;
     }
   }
 }

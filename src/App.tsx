@@ -30,8 +30,10 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header />
-      <Navbar />
+      <div className="top">
+        <Header />
+        <Navbar />
+      </div>
       {/* <ScrollToTop /> */}
       <Switch>
         <Route path="/" exact>
