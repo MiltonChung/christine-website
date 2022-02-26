@@ -1,13 +1,27 @@
 main#film {
+  margin: 1.5rem auto;
+
   .film-info {
     margin-bottom: 0.5rem;
 
-    h2 {
+    h3 {
       line-height: 40px;
+      font-weight: 600;
     }
 
     p:last-child {
       font-style: italic;
+    }
+
+    @media (max-width: $screen-sm) {
+      h3 {
+        font-size: 32px;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 15px;
+      }
     }
   }
 
