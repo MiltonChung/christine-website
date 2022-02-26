@@ -1,4 +1,9 @@
 main#other {
+  h2 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
   .collaborations-container {
     display: flex;
     flex-direction: column;
@@ -21,18 +26,18 @@ main#other {
         margin-top: -0.4rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: flex-start;
 
         h4 {
-          font-weight: bold;
+          font-weight: 500;
         }
 
         .collab-btn {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: $colors-collab-accent;
+          background: $colors-dark-gray;
+          margin-top: 1rem;
 
           svg {
             width: 15px;
