@@ -9,9 +9,14 @@ const Other = () => {
 
       <div className="collaborations-container">
         <div className="collaboration">
-          <div className="left-pane">
+          <a
+            href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
+            target="_blank"
+            rel="noreferrer"
+            className="left-pane"
+          >
             <img src={AnitaInterview} alt="" />
-          </div>
+          </a>
           <div className="right-pane">
             <div className="collaboration-info">
               <h4>WWW (Women's World War)</h4>
@@ -31,9 +36,14 @@ const Other = () => {
         </div>
 
         <div className="collaboration">
-          <div className="left-pane">
+          <a
+            href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
+            target="_blank"
+            rel="noreferrer"
+            className="left-pane"
+          >
             <img src={AnitaInterview} alt="" />
-          </div>
+          </a>
           <div className="right-pane">
             <div className="collaboration-info">
               <h4>Pahulu</h4>
@@ -53,9 +63,14 @@ const Other = () => {
         </div>
 
         <div className="collaboration">
-          <div className="left-pane">
+          <a
+            href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
+            target="_blank"
+            rel="noreferrer"
+            className="left-pane"
+          >
             <img src={AnitaInterview} alt="" />
-          </div>
+          </a>
           <div className="right-pane">
             <div className="collaboration-info">
               <h4>Oranges</h4>
@@ -75,9 +90,14 @@ const Other = () => {
         </div>
 
         <div className="collaboration">
-          <div className="left-pane">
+          <a
+            href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
+            target="_blank"
+            rel="noreferrer"
+            className="left-pane"
+          >
             <img src={AnitaInterview} alt="" />
-          </div>
+          </a>
           <div className="right-pane">
             <div className="collaboration-info">
               <h4>WWW (Women's World War)</h4>
