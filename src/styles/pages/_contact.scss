@@ -1,0 +1,101 @@
+main#contact {
+  margin-bottom: 4rem;
+  margin-top: 2.5rem;
+
+  h2 {
+    font-weight: 500;
+  }
+
+  .contact-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    margin-top: 1rem;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+
+    @media (max-width: 430px) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      font-family: $font-family;
+      max-width: 500px;
+
+      ::placeholder {
+        color: rgb(185, 185, 185);
+        opacity: 1;
+      }
+
+      label {
+        margin: 0;
+        margin-top: 0.5rem;
+        p {
+          margin: 0.2rem 0;
+          font-size: 1.2rem;
+        }
+      }
+      input {
+        width: 100%;
+        border-radius: 5px;
+        border: $colors-horizontal-line solid 2px;
+        padding: 0.6rem 0.4rem;
+      }
+      textarea {
+        width: 100%;
+        border-radius: 5px;
+        border: $colors-horizontal-line solid 2px;
+        padding: 0.5rem;
+        margin: 0;
+      }
+      small.error {
+        display: block;
+        color: $colors-error;
+        margin-left: 0.3rem;
+        margin-top: 0.15rem;
+
+        &.error-textbox {
+          margin-top: -0.3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        button {
+          font-size: 16px;
+          padding: 0.5rem 0.7rem;
+        }
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .Toastify__toast-container {
+      width: fit-content;
+
+      .submit-feedback {
+        background: $colors-dark-gray;
+        color: $colors-white;
+        font-size: 20px;
+        font-family: $font-family;
+        width: fit-content;
+        padding: 8px 0.8rem 8px 1rem;
+        .Toastify__toast-body {
+          margin-right: 5px;
+        }
+      }
+
+      .Toastify__progress-bar {
+        background: $colors-light-blue;
+      }
+
+      .Toastify__close-button--light {
+        color: $colors-white;
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,3 +1,32 @@
+button.primary-button {
+  background: $colors-dark-gray;
+  border-radius: 5px;
+  border: 3px solid $colors-dark-gray;
+  color: $colors-white;
+  padding: 0 1rem;
+  width: fit-content;
+  height: 3rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  margin-top: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+}
+button.primary-button:hover {
+  opacity: 0.8;
+}
+button.primary-button:disabled {
+  background: $colors-dark-gray-disabled;
+  border: 3px solid $colors-dark-gray-disabled;
+  color: rgb(219, 219, 219);
+}
+button.primary-button:disabled:hover {
+  opacity: 1;
+  cursor: not-allowed;
+}
+
 @mixin button($bcolor, $url, $x1, $y1, $bor, $col) {
   background: $bcolor;
   mask: url($url);
