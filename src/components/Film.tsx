@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FComponent } from "../types/common";
 import { RouteComponentProps } from "react-router-dom";
-import WhyAreYouCrying1 from "../assets/images/whyAreYouCrying2.png";
+import WhyAreYouCrying1 from "../assets/images/whyAreYouCrying2.jpg";
 import WhyAreYouCrying2 from "../assets/images/whyAreYouCrying1.png";
 
 type FilmProps = RouteComponentProps<{

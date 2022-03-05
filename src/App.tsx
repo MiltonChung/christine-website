@@ -7,6 +7,7 @@ import { Films } from "./pages/Films";
 import { Film } from "./components/Film";
 import { Other } from "./pages/Other";
 import { Contact } from "./pages/Contact";
+import { Featured } from "./pages/Featured";
 // import sanityClient from "./lib/sanity";
 // import { useAsync } from "./hooks/useAsync";
 
@@ -50,9 +51,9 @@ const App = () => {
         <Route path="/contact">
           <Contact />
         </Route>
-        {/* <Route path="/">
-          <Home books={books} intro={intro} />
-        </Route> */}
+        <Route path="/featured">
+          <Featured />
+        </Route>
       </Switch>
       {/* <Footer /> */}
     </div>

@@ -1,8 +1,6 @@
 main#films {
-  margin-top: 2rem;
-
   h2 {
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .films-showcase {
@@ -24,8 +22,8 @@ main#films {
           transition: transform 0.8s ease;
           width: 100%;
           height: auto;
-          object-fit: cover;
           max-height: 500px;
+          object-fit: cover;
         }
 
         &:hover img {
@@ -38,7 +36,7 @@ main#films {
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        margin-top: 1rem;
+        margin-top: 0.25rem;
 
         .film-caption {
           font-size: 30px;
