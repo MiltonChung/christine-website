@@ -6,6 +6,10 @@ import WhyAreYouCrying from "../assets/images/whyAreYouCrying3.png";
 
 const Films = () => {
   // sanity call here to fetch data
+  // React.useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   document.documentElement.scrollTop = 0;
+  // }, []);
 
   return (
     <main id="films">

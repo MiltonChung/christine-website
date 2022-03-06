@@ -8,6 +8,7 @@ import { Film } from "./components/Film";
 import { Other } from "./pages/Other";
 import { Contact } from "./pages/Contact";
 import { Featured } from "./pages/Featured";
+import ScrollToTop from "./components/ScrollToTop";
 // import sanityClient from "./lib/sanity";
 // import { useAsync } from "./hooks/useAsync";
 
@@ -32,11 +33,11 @@ const App = () => {
 
   return (
     <div className="app">
+      <ScrollToTop />
       <div className="top">
         <Header />
         <Navbar />
       </div>
-      {/* <ScrollToTop /> */}
       <Switch>
         <Route path="/" exact>
           <Home />
