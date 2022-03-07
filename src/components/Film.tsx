@@ -59,12 +59,9 @@ const Film: FComponent<FilmProps> = ({ match }) => {
       <div className="film-text">
         <h3>Synopsis:</h3>
         <p>
-          So often do we forget that our mothers were, and still are, women. How
-          much do our mothers hide from us, and how much do those overlap with
-          the secrets we keep to ourselves? This film is told through the voices
-          of several first and second generation Asian American women, as a
-          daughter tries to recreate the memories of her mother’s life before
-          hers.
+          Two roommates face a sleepless night as they struggle to hold on to
+          their childhood when faced with adult issues. A film about friendship
+          and the aftermath of sexual assault.
         </p>
       </div>
 

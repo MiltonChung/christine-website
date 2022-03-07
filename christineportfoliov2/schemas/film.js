@@ -109,7 +109,7 @@ export default {
     },
     {
       name: "description2",
-      title: "Description Two",
+      title: "Description Two (optional)",
       type: "array",
       of: [
         {

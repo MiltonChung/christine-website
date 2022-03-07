@@ -8,6 +8,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import blockContent from "./blockContent";
 import film from "./film";
 import collaboration from "./collaboration";
+import home from "./home";
 
 export default createSchema({
   // We name our schema
@@ -15,6 +16,7 @@ export default createSchema({
   types: schemaTypes.concat([
     film,
     collaboration,
+    home,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,

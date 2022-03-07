@@ -56,7 +56,6 @@ const App = () => {
           <Featured />
         </Route>
       </Switch>
-      {/* <Footer /> */}
     </div>
   );
 };
