@@ -5,20 +5,12 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // We import object and document schemas
-import blockContent from "./blockContent";
 import film from "./film";
 import collaboration from "./collaboration";
 import home from "./home";
+import featured from "./featured";
 
 export default createSchema({
-  // We name our schema
   name: "default",
-  types: schemaTypes.concat([
-    film,
-    collaboration,
-    home,
-    // When added to this list, object types can be used as
-    // { type: 'typename' } in other document schemas
-    blockContent,
-  ]),
+  types: schemaTypes.concat([home, film, featured, collaboration]),
 });
