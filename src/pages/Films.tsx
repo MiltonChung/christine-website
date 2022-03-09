@@ -1,19 +1,10 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../lib/sanity";
-import { toKebabCase } from "../util/index";
 import { useAsync } from "../hooks/useAsync";
-// import { PortableText } from "@portabletext/react";
+import { SanityImage } from "../types/common";
 import { PortableTextBlock } from "@portabletext/types";
 import { ReactComponent as RightArrow } from "../assets/icons/right-arrow.svg";
-
-type SanityImage = {
-  asset: {
-    url: string;
-    _id: string;
-  };
-  alt: string;
-};
 
 type FilmsResponse = {
   _id: string;
@@ -101,7 +92,7 @@ const Films = () => {
                     <Link className="film-caption" to={`/films/${film.id}`}>
                       {film.title} <span>({film.year})</span>
                     </Link>
-                    <Link to={`/films/${toKebabCase(film.title)}`}>
+                    <Link to={`/films/${film.id}`}>
                       <RightArrow />
                     </Link>
                   </div>
