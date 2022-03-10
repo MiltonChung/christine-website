@@ -1,24 +1,80 @@
 import * as React from "react";
 import { FComponent } from "../types/common";
 import { RouteComponentProps } from "react-router-dom";
-import WhyAreYouCrying1 from "../assets/images/whyAreYouCrying2.jpg";
-import WhyAreYouCrying2 from "../assets/images/whyAreYouCrying1.png";
+import sanityClient from "../lib/sanity";
+import { useAsync } from "../hooks/useAsync";
+import { FilmResponse } from "../pages/Films";
+import { PortableText } from "@portabletext/react";
 
 type FilmProps = RouteComponentProps<{
   id: string;
 }>;
 
 const Film: FComponent<FilmProps> = ({ match }) => {
+  const { run, data: filmInfo } = useAsync<FilmResponse>();
+
+  React.useEffect(() => {
+    document.cookie = "sameSite=None; Secure";
+
+    run(
+      sanityClient.fetch(
+        `*[_type == "film" && id == ${match.params.id}][0] {
+  				_id,
+          id,
+  			  title,
+          mainImage{
+						asset->{
+							_id,
+							url
+						},
+            alt
+					},
+          year,
+          length,
+          genre,
+          role,
+          link,
+          triggerWarning,
+          image1 {
+						asset->{
+							_id,
+							url
+						},
+            alt
+					},
+          description1,
+          image2 {
+						asset->{
+							_id,
+							url
+						},
+            alt
+					},
+          description2,
+          credits
+  			}`
+      )
+    ).catch((errors: string) => {
+      throw Error(errors);
+    });
+  }, [match.params.id, run]);
+
+  if (!filmInfo) return null;
+
+  console.log(filmInfo);
+
   return (
     <main id="film">
       <div className="film-info">
-        <h3>Why Are You Crying? {match.params.id}</h3>
-        <p>13 min. Experimental Documentary. 2020.</p>
-        <p>Director, Writer, Editor, Cinematographer</p>
+        <h3>{filmInfo.title}</h3>
+        <p>
+          {filmInfo.length} {filmInfo.genre} {filmInfo.year}
+        </p>
+        <p>{filmInfo.role}</p>
       </div>
 
       <a
-        href="https://vimeo.com/429805601"
+        href={filmInfo.link}
         rel="noopener noreferrer"
         target="_blank"
         className="film-link"
@@ -49,37 +105,24 @@ const Film: FComponent<FilmProps> = ({ match }) => {
       </div>
 
       <div className="trigger-warning">
-        <p>Trigger Warning: Sexual Assault/Harrassment, Rape, Mental Illness</p>
+        <p>{filmInfo.triggerWarning}</p>
       </div>
 
       <div className="horizontal-line" />
 
-      <img src={WhyAreYouCrying1} alt="" />
+      <img src={filmInfo?.image1.asset.url} alt={filmInfo.image1.alt} />
 
       <div className="film-text">
-        <h3>Synopsis:</h3>
-        <p>
-          Two roommates face a sleepless night as they struggle to hold on to
-          their childhood when faced with adult issues. A film about friendship
-          and the aftermath of sexual assault.
-        </p>
+        <PortableText value={filmInfo.description1} />
       </div>
 
       <div className="horizontal-line" />
 
-      <img src={WhyAreYouCrying2} alt="" />
+      <img src={filmInfo?.image2.asset.url} alt={filmInfo.image2.alt} />
 
       <div className="film-text">
-        <h3>Credits:</h3>
-        <p>
-          <span>Written and Directed by:</span> Christine Lin <br />
-          <span>Cinematography by:</span> Michelle Patterson, Mia Francesca
-          Knox, Sandra S., Christine Lin <br />
-          <span>Performed by:</span> Yu Li and Christine Lin <br />
-          <span>Voices of:</span> Yu Li, Isabelle Winardi, Katelyn Li, Sarah,
-          and Christine Lin <br />
-          <span>Edited by:</span> Christine Lin <br />
-        </p>
+        <h3>Credits: </h3>
+        <PortableText value={filmInfo.credits} />
       </div>
     </main>
   );

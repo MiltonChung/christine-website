@@ -6,7 +6,7 @@ import { SanityImage } from "../types/common";
 import { PortableTextBlock } from "@portabletext/types";
 import { ReactComponent as RightArrow } from "../assets/icons/right-arrow.svg";
 
-type FilmsResponse = {
+export type FilmResponse = {
   _id: string;
   id: number;
   year: string;
@@ -25,7 +25,7 @@ type FilmsResponse = {
 };
 
 const Films = () => {
-  const { run, data: filmsInfo } = useAsync<FilmsResponse[]>();
+  const { run, data: filmsInfo } = useAsync<FilmResponse[]>();
 
   React.useEffect(() => {
     document.cookie = "sameSite=None; Secure";
