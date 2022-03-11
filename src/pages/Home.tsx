@@ -12,7 +12,7 @@ type HomeResponse = {
 };
 
 const Home = () => {
-  const { run, data: homeInfo } = useAsync<HomeResponse[]>();
+  const { run, data: homeInfo, isLoading } = useAsync<HomeResponse[]>();
 
   React.useEffect(() => {
     document.cookie = "sameSite=None; Secure";
@@ -36,7 +36,7 @@ const Home = () => {
     });
   }, [run]);
 
-  if (!homeInfo) return null;
+  if (isLoading || !homeInfo) return null;
 
   const { mainImage, aboutMe } = homeInfo[0];
 
