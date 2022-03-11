@@ -9,6 +9,12 @@ export default {
       type: "string",
     },
     {
+      name: "order",
+      title: "Display Order",
+      description: "1 comes first in the list, then it can go up to any number",
+      type: "string",
+    },
+    {
       name: "mainImage",
       title: "Main Image",
       type: "image",

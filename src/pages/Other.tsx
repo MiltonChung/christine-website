@@ -1,140 +1,85 @@
 import * as React from "react";
-import AnitaInterview from "../assets/images/AnitaInterview.jpeg";
+import sanityClient from "../lib/sanity";
+import { useAsync } from "../hooks/useAsync";
+import { SanityImage } from "../types/common";
+import { PortableText } from "@portabletext/react";
+import { PortableTextBlock } from "@portabletext/types";
 import { ReactComponent as ExternalLinkIcon } from "../assets/icons/externalLink.svg";
 
+export type CollaborationResponse = {
+  _id: string;
+  id: number;
+  title: string;
+  mainImage: SanityImage;
+  link: string;
+  description: PortableTextBlock;
+};
+
 const Other = () => {
+  const { run, data: collaborationInfo } = useAsync<CollaborationResponse[]>();
+
+  React.useEffect(() => {
+    document.cookie = "sameSite=None; Secure";
+
+    run(
+      sanityClient.fetch(
+        `*[_type == "collaboration"] | order(order asc) {
+  				_id,
+          order,
+  			  title,
+          mainImage{
+						asset->{
+							_id,
+							url
+						},
+            alt
+					},
+          link,
+          description,
+  			}`
+      )
+    ).catch((errors: string) => {
+      throw Error(errors);
+    });
+  }, [run]);
+
+  if (!collaborationInfo) return null;
+
   return (
     <main id="other">
       <h2>Collaborations</h2>
 
       <div className="collaborations-container">
-        <div className="collaboration">
-          <a
-            href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
-            target="_blank"
-            rel="noreferrer"
-            className="left-pane"
-          >
-            <img src={AnitaInterview} alt="" />
-          </a>
-          <div className="right-pane">
-            <div className="collaboration-info">
-              <h4>WWW (Women's World War)</h4>
-              <p>Interview with Anita Chang</p>
-              <p>regarding experimental and feminist filmmaking</p>
+        {collaborationInfo.map((data) => {
+          return (
+            <div className="collaboration" key={data._id}>
+              <a
+                href={data.link}
+                target="_blank"
+                rel="noreferrer"
+                className="left-pane"
+              >
+                <img src={data.mainImage.asset.url} alt={data.mainImage.alt} />
+              </a>
+              <div className="right-pane">
+                <div className="collaboration-info">
+                  <h4>{data.title}</h4>
+                  <PortableText value={data.description} />
+                </div>
+
+                <a
+                  href={data.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link-button collab-btn"
+                >
+                  Check it out! <ExternalLinkIcon />
+                </a>
+              </div>
             </div>
-
-            <a
-              href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
-              target="_blank"
-              rel="noreferrer"
-              className="link-button collab-btn"
-            >
-              Check it out! <ExternalLinkIcon />
-            </a>
-          </div>
-        </div>
-
-        <div className="collaboration">
-          <a
-            href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
-            target="_blank"
-            rel="noreferrer"
-            className="left-pane"
-          >
-            <img src={AnitaInterview} alt="" />
-          </a>
-          <div className="right-pane">
-            <div className="collaboration-info">
-              <h4>Pahulu</h4>
-              <p>Interview with Anita Chang</p>
-              <p>regarding experimental and feminist filmmaking</p>
-            </div>
-
-            <a
-              href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
-              target="_blank"
-              rel="noreferrer"
-              className="link-button collab-btn"
-            >
-              Check it out! <ExternalLinkIcon />
-            </a>
-          </div>
-        </div>
-
-        <div className="collaboration">
-          <a
-            href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
-            target="_blank"
-            rel="noreferrer"
-            className="left-pane"
-          >
-            <img src={AnitaInterview} alt="" />
-          </a>
-          <div className="right-pane">
-            <div className="collaboration-info">
-              <h4>Oranges</h4>
-              <p>Interview with Anita Chang</p>
-              <p>regarding experimental and feminist filmmaking</p>
-            </div>
-
-            <a
-              href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
-              target="_blank"
-              rel="noreferrer"
-              className="link-button collab-btn"
-            >
-              Check it out! <ExternalLinkIcon />
-            </a>
-          </div>
-        </div>
-
-        <div className="collaboration">
-          <a
-            href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
-            target="_blank"
-            rel="noreferrer"
-            className="left-pane"
-          >
-            <img src={AnitaInterview} alt="" />
-          </a>
-          <div className="right-pane">
-            <div className="collaboration-info">
-              <h4>WWW (Women's World War)</h4>
-              <p>Interview with Anita Chang</p>
-              <p>regarding experimental and feminist filmmaking</p>
-            </div>
-
-            <a
-              href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
-              target="_blank"
-              rel="noreferrer"
-              className="link-button collab-btn"
-            >
-              Check it out! <ExternalLinkIcon />
-            </a>
-          </div>
-        </div>
+          );
+        })}
       </div>
-
-      {/* <div className="video-showcase">
-        <div className="line-height-sm">
-          <div className="ind-video">
-            <a
-              href="https://sites.google.com/ucsc.edu/femexfilmarchive/filmmaker-index/anita-chang"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img src={AnitaInterview} className="image" alt="" />
-              <div className="middle"></div>
-              <div className="text text-femex">FEMEXFILMARCHIVE</div>
-            </a>
-          </div>
-          <p className="collab-title text-md mt-3 text-center bold">
-            FEMEXFILMARCHIVE
-          </p>
-        </div>
-      </div> */}
     </main>
   );
 };

@@ -27,9 +27,9 @@ body {
 }
 
 main {
-  margin-bottom: 2rem;
   max-width: 100ch;
   margin: 0 auto;
+  margin-bottom: 2rem;
   padding: 1rem 2rem 0 2rem;
 
   @media (max-width: $screen-md) {

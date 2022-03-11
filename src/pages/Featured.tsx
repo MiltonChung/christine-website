@@ -41,11 +41,11 @@ const Featured = () => {
 
       {featuredInfo.map((item, index, array) => {
         return (
-          <>
-            <div className="iframe-video" key={item._id}>
+          <React.Fragment key={item._id}>
+            <div className="iframe-video">
               <div className="iframe-wrapper">
                 <iframe
-                  src={`https://www.youtube.com/embed/${item.youtubeID}`}
+                  src={`https://www.youtube-nocookie.com/embed/${item.youtubeID}`}
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -68,7 +68,7 @@ const Featured = () => {
             {index === array.length - 1 ? null : (
               <hr className="horizontal-line" />
             )}
-          </>
+          </React.Fragment>
         );
       })}
     </main>

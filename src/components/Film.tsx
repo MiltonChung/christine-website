@@ -1,10 +1,10 @@
 import * as React from "react";
-import { FComponent } from "../types/common";
-import { RouteComponentProps } from "react-router-dom";
 import sanityClient from "../lib/sanity";
+import { FComponent } from "../types/common";
 import { useAsync } from "../hooks/useAsync";
 import { FilmResponse } from "../pages/Films";
 import { PortableText } from "@portabletext/react";
+import { RouteComponentProps } from "react-router-dom";
 
 type FilmProps = RouteComponentProps<{
   id: string;
@@ -61,7 +61,7 @@ const Film: FComponent<FilmProps> = ({ match }) => {
 
   if (!filmInfo) return null;
 
-  console.log(filmInfo);
+  const videoID = filmInfo.link.split("/")[filmInfo.link.split("/").length - 1];
 
   return (
     <main id="film">
@@ -90,7 +90,7 @@ const Film: FComponent<FilmProps> = ({ match }) => {
       <div className="vimeo-video-container">
         <iframe
           title="vimeo"
-          src="https://player.vimeo.com/video/429805601?color=ffffff&byline=0&portrait=0"
+          src={`https://player.vimeo.com/video/${videoID}?color=ffffff&byline=0&portrait=0`}
           style={{
             position: "absolute",
             top: 0,
