@@ -1,22 +1,25 @@
 import * as React from "react";
+import { HomeResponse } from "../App";
 import sanityClient from "../lib/sanity";
 import { useAsync } from "../hooks/useAsync";
-import { SanityImage } from "../types/common";
+import { FComponent } from "../types/common";
 import { PortableText } from "@portabletext/react";
-import { PortableTextBlock } from "@portabletext/types";
+import { customPortableTextComponent } from "../lib/PortableTextCustom";
 
-type HomeResponse = {
-  _id: string;
-  mainImage: SanityImage;
-  aboutMe: PortableTextBlock;
+type HomeProps = {
+  appHomeData: HomeResponse[];
+  setAppHomeData: React.Dispatch<React.SetStateAction<HomeResponse[]>>;
 };
 
-const Home = () => {
-  const { run, data: homeInfo, isLoading } = useAsync<HomeResponse[]>();
+const Home: FComponent<HomeProps> = ({ appHomeData, setAppHomeData }) => {
+  const { run } = useAsync<HomeResponse[]>();
 
   React.useEffect(() => {
-    console.log("asd");
     document.cookie = "sameSite=None; Secure";
+
+    if (appHomeData?.length > 0) {
+      return;
+    }
 
     run(
       sanityClient.fetch(
@@ -32,14 +35,23 @@ const Home = () => {
           aboutMe
   			}`
       )
-    ).catch((errors: string) => {
-      throw Error(errors);
-    });
-  }, [run]);
+    )
+      .then((data) => {
+        return setAppHomeData(data);
+      })
+      .catch((errors: string) => {
+        throw Error(errors);
+      });
+  }, [appHomeData, run, setAppHomeData]);
 
-  if (isLoading || !homeInfo) return null;
+  if (!appHomeData)
+    return (
+      <main id="home">
+        <p>loading...</p>
+      </main>
+    );
 
-  const { mainImage, aboutMe } = homeInfo[0];
+  const { mainImage, aboutMe } = appHomeData[0];
 
   return (
     <main id="home">
@@ -52,9 +64,10 @@ const Home = () => {
       <section className="home-intro">
         <h2 className="home-section__title">About Me</h2>
 
-        <PortableText value={aboutMe} />
-
-        <p className="home-section__body"></p>
+        <PortableText
+          value={aboutMe}
+          components={customPortableTextComponent}
+        />
       </section>
     </main>
   );
