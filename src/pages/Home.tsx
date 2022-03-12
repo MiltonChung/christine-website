@@ -15,6 +15,7 @@ const Home = () => {
   const { run, data: homeInfo, isLoading } = useAsync<HomeResponse[]>();
 
   React.useEffect(() => {
+    console.log("asd");
     document.cookie = "sameSite=None; Secure";
 
     run(
