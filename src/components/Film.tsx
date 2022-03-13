@@ -1,16 +1,15 @@
 import * as React from "react";
+import { FilmResponse } from "../App";
 import sanityClient from "../lib/sanity";
 import { FComponent } from "../types/common";
 import { useAsync } from "../hooks/useAsync";
-import { FilmResponse } from "../pages/Films";
 import { PortableText } from "@portabletext/react";
-import { RouteComponentProps } from "react-router-dom";
 
-type FilmProps = RouteComponentProps<{
+type FilmProps = {
   id: string;
-}>;
+};
 
-const Film: FComponent<FilmProps> = ({ match }) => {
+const Film: FComponent<FilmProps> = ({ id }) => {
   const { run, data: filmInfo } = useAsync<FilmResponse>();
 
   React.useEffect(() => {
@@ -18,7 +17,7 @@ const Film: FComponent<FilmProps> = ({ match }) => {
 
     run(
       sanityClient.fetch(
-        `*[_type == "film" && id == ${match.params.id}][0] {
+        `*[_type == "film" && id == ${id}][0] {
   				_id,
           id,
   			  title,
@@ -57,7 +56,7 @@ const Film: FComponent<FilmProps> = ({ match }) => {
     ).catch((errors: string) => {
       throw Error(errors);
     });
-  }, [match.params.id, run]);
+  }, [id, run]);
 
   if (!filmInfo) return null;
 

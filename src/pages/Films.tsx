@@ -2,33 +2,22 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../lib/sanity";
 import { useAsync } from "../hooks/useAsync";
-import { SanityImage } from "../types/common";
-import { PortableTextBlock } from "@portabletext/types";
 import { ReactComponent as RightArrow } from "../assets/icons/right-arrow.svg";
+import { FilmResponse } from "../App";
+import { FComponent } from "../types/common";
 
-export type FilmResponse = {
-  _id: string;
-  id: number;
-  year: string;
-  triggerWarning: string;
-  title: string;
-  role: string;
-  mainImage: SanityImage;
-  link: string;
-  length: string;
-  image1: SanityImage;
-  image2: SanityImage;
-  genre: string;
-  description1: PortableTextBlock;
-  description2?: PortableTextBlock;
-  credits: PortableTextBlock;
+type FilmsProps = {
+  appFilmsData: FilmResponse[];
+  setAppFilmsData: React.Dispatch<React.SetStateAction<FilmResponse[]>>;
 };
 
-const Films = () => {
-  const { run, data: filmsInfo } = useAsync<FilmResponse[]>();
+const Films: FComponent<FilmsProps> = ({ appFilmsData, setAppFilmsData }) => {
+  const { run } = useAsync<FilmResponse[]>();
 
   React.useEffect(() => {
     document.cookie = "sameSite=None; Secure";
+
+    if (appFilmsData?.length > 0) return;
 
     run(
       sanityClient.fetch(
@@ -68,18 +57,20 @@ const Films = () => {
           credits
   			}`
       )
-    ).catch((errors: string) => {
-      throw Error(errors);
-    });
-  }, [run]);
+    )
+      .then((data) => setAppFilmsData(data))
+      .catch((errors: string) => {
+        throw Error(errors);
+      });
+  }, [appFilmsData?.length, run, setAppFilmsData]);
 
   return (
     <main id="films">
       <h2>Films I Produced</h2>
 
       <div className="films-showcase">
-        {filmsInfo
-          ? filmsInfo.map((film) => {
+        {appFilmsData
+          ? appFilmsData.map((film) => {
               return (
                 <div className="film" key={film._id}>
                   <Link className="film-img" to={`/films/${film.id}`}>
@@ -99,7 +90,7 @@ const Films = () => {
                 </div>
               );
             })
-          : "loading"}
+          : "loading..."}
       </div>
     </main>
   );

@@ -1,25 +1,28 @@
 import * as React from "react";
 import sanityClient from "../lib/sanity";
 import { useAsync } from "../hooks/useAsync";
-import { SanityImage } from "../types/common";
 import { PortableText } from "@portabletext/react";
-import { PortableTextBlock } from "@portabletext/types";
 import { ReactComponent as ExternalLinkIcon } from "../assets/icons/externalLink.svg";
+import { CollaborationResponse } from "../App";
+import { FComponent } from "../types/common";
 
-export type CollaborationResponse = {
-  _id: string;
-  id: number;
-  title: string;
-  mainImage: SanityImage;
-  link: string;
-  description: PortableTextBlock;
+type OtherProps = {
+  appCollaborationsData: CollaborationResponse[];
+  setAppCollaborationsData: React.Dispatch<
+    React.SetStateAction<CollaborationResponse[]>
+  >;
 };
 
-const Other = () => {
-  const { run, data: collaborationInfo } = useAsync<CollaborationResponse[]>();
+const Other: FComponent<OtherProps> = ({
+  appCollaborationsData,
+  setAppCollaborationsData,
+}) => {
+  const { run } = useAsync<CollaborationResponse[]>();
 
   React.useEffect(() => {
     document.cookie = "sameSite=None; Secure";
+
+    if (appCollaborationsData?.length > 0) return;
 
     run(
       sanityClient.fetch(
@@ -38,19 +41,21 @@ const Other = () => {
           description,
   			}`
       )
-    ).catch((errors: string) => {
-      throw Error(errors);
-    });
-  }, [run]);
+    )
+      .then((data) => setAppCollaborationsData(data))
+      .catch((errors: string) => {
+        throw Error(errors);
+      });
+  }, [appCollaborationsData?.length, run, setAppCollaborationsData]);
 
-  if (!collaborationInfo) return null;
+  if (!appCollaborationsData) return null;
 
   return (
     <main id="other">
       <h2>Collaborations</h2>
 
       <div className="collaborations-container">
-        {collaborationInfo.map((data) => {
+        {appCollaborationsData.map((data) => {
           return (
             <div className="collaboration" key={data._id}>
               <a

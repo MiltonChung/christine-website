@@ -8,7 +8,7 @@ import { Featured } from "./pages/Featured";
 import { Header } from "./components/Header";
 import { SanityImage } from "./types/common";
 import { Navbar } from "./components/Navbar";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, RouteComponentProps } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import { PortableTextBlock } from "@portabletext/types";
 
@@ -18,15 +18,56 @@ export type HomeResponse = {
   aboutMe: PortableTextBlock;
 };
 
+export type FilmResponse = {
+  _id: string;
+  id: number;
+  year: string;
+  triggerWarning: string;
+  title: string;
+  role: string;
+  mainImage: SanityImage;
+  link: string;
+  length: string;
+  image1: SanityImage;
+  image2: SanityImage;
+  genre: string;
+  description1: PortableTextBlock;
+  description2?: PortableTextBlock;
+  credits: PortableTextBlock;
+};
+
+export type FeaturedResponse = {
+  _id: string;
+  youtubeID: string;
+  role: string;
+  date: Date;
+  title: string;
+  order: number;
+};
+
+export type CollaborationResponse = {
+  _id: string;
+  id: number;
+  title: string;
+  mainImage: SanityImage;
+  link: string;
+  description: PortableTextBlock;
+};
+
+interface MatchParams {
+  id: string;
+}
+
+interface MatchProps extends RouteComponentProps<MatchParams> {}
+
 /*
 TODO:
 
-- add all app state data to app to cache the result so it doesn't recall the api every time
+~ add all app state data to app to cache the result so it doesn't recall the api every time
 the user reloads/switch pages
+~ home page about me paragraph styling
 
 - add error boundaries
-
-- home page about me paragraph styling
 
 - check for mobile views using polypane
 
@@ -37,9 +78,11 @@ the user reloads/switch pages
 
 const App = () => {
   const [appHomeData, setAppHomeData] = React.useState<HomeResponse[]>();
-  // const [appFilms, setAppFilms] = React.useState([]);
-  // const [appFeatured, setAppFeatured] = React.useState([]);
-  // const [appCollaborations, setAppCollaborations] = React.useState([]);
+  const [appFilmsData, setAppFilmsData] = React.useState<FilmResponse[]>([]);
+  const [appFeatured, setAppFeatured] = React.useState<FeaturedResponse[]>([]);
+  const [appCollaborationsData, setAppCollaborationsData] = React.useState<
+    CollaborationResponse[]
+  >([]);
 
   return (
     <div className="app">
@@ -55,17 +98,29 @@ const App = () => {
           <Home appHomeData={appHomeData} setAppHomeData={setAppHomeData} />
         </Route>
         <Route path="/films" exact>
-          <Films />
+          <Films
+            appFilmsData={appFilmsData}
+            setAppFilmsData={setAppFilmsData}
+          />
         </Route>
-        <Route path="/films/:id" component={Film} />
+        <Route
+          path="/films/:id"
+          component={({ match }: MatchProps) => <Film id={match.params.id} />}
+        />
         <Route path="/other">
-          <Other />
+          <Other
+            appCollaborationsData={appCollaborationsData}
+            setAppCollaborationsData={setAppCollaborationsData}
+          />
         </Route>
         <Route path="/contact">
           <Contact />
         </Route>
         <Route path="/featured">
-          <Featured />
+          <Featured
+            appFeaturedData={appFeatured}
+            setAppFeaturedData={setAppFeatured}
+          />
         </Route>
       </Switch>
     </div>

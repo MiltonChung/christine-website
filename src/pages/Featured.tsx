@@ -1,21 +1,24 @@
 import * as React from "react";
 import sanityClient from "../lib/sanity";
 import { useAsync } from "../hooks/useAsync";
+import { FeaturedResponse } from "../App";
+import { FComponent } from "../types/common";
 
-type FeaturedResponse = {
-  _id: string;
-  youtubeID: string;
-  role: string;
-  date: Date;
-  title: string;
-  order: number;
+type FeaturedProps = {
+  appFeaturedData: FeaturedResponse[];
+  setAppFeaturedData: React.Dispatch<React.SetStateAction<FeaturedResponse[]>>;
 };
 
-const Featured = () => {
-  const { run, data: featuredInfo } = useAsync<FeaturedResponse[]>();
+const Featured: FComponent<FeaturedProps> = ({
+  appFeaturedData,
+  setAppFeaturedData,
+}) => {
+  const { run } = useAsync<FeaturedResponse[]>();
 
   React.useEffect(() => {
     document.cookie = "sameSite=None; Secure";
+
+    if (appFeaturedData?.length > 0) return;
 
     run(
       sanityClient.fetch(
@@ -28,18 +31,20 @@ const Featured = () => {
           order
   			}`
       )
-    ).catch((errors: string) => {
-      throw Error(errors);
-    });
-  }, [run]);
+    )
+      .then((data) => setAppFeaturedData(data))
+      .catch((errors: string) => {
+        throw Error(errors);
+      });
+  }, [appFeaturedData?.length, run, setAppFeaturedData]);
 
-  if (!featuredInfo) return null;
+  if (!appFeaturedData) return null;
 
   return (
     <main id="featured">
       <h2>Videos I Edited</h2>
 
-      {featuredInfo.map((item, index, array) => {
+      {appFeaturedData.map((item, index, array) => {
         return (
           <React.Fragment key={item._id}>
             <div className="iframe-video">
