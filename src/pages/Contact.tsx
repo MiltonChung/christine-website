@@ -25,7 +25,7 @@ const Contact = () => {
   const toastifySuccess = () => {
     toast("🚀 Message sent! Thank you!", {
       position: "bottom-center",
-      autoClose: 5000222,
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

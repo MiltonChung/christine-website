@@ -14,7 +14,12 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.0",
     "react-toastify": "^8.2.0",
-    "sass": "^1.49.7"
+    "sass": "^1.49.7",
+    "workbox-core": "^5.1.4",
+    "workbox-expiration": "^5.1.4",
+    "workbox-precaching": "^5.1.4",
+    "workbox-routing": "^5.1.4",
+    "workbox-strategies": "^5.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
