@@ -11,7 +11,7 @@ import { Navbar } from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import { ErrorBoundary } from "react-error-boundary";
 import { PortableTextBlock } from "@portabletext/types";
-import { Switch, Route, RouteComponentProps } from "react-router-dom";
+import { Switch, Route, RouteComponentProps, Redirect } from "react-router-dom";
 import { ErrorFallback } from "./components/ErrorFallback";
 
 export type HomeResponse = {
@@ -63,7 +63,6 @@ interface MatchProps
 
 /*
 TODO:
-
 ~ add all app state data to app to cache the result so it doesn't recall the api every time
 the user reloads/switch pages
 ~ home page about me paragraph styling
@@ -129,6 +128,7 @@ const App = () => {
               setAppFeaturedData={setAppFeatured}
             />
           </Route>
+          <Redirect to="/" />
         </Switch>
       </ErrorBoundary>
     </div>
