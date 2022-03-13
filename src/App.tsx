@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Home } from "./pages/Home";
 import { Films } from "./pages/Films";
 import { Other } from "./pages/Other";
@@ -8,9 +8,11 @@ import { Featured } from "./pages/Featured";
 import { Header } from "./components/Header";
 import { SanityImage } from "./types/common";
 import { Navbar } from "./components/Navbar";
-import { Switch, Route, RouteComponentProps } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import { ErrorBoundary } from "react-error-boundary";
 import { PortableTextBlock } from "@portabletext/types";
+import { Switch, Route, RouteComponentProps } from "react-router-dom";
+import { ErrorFallback } from "./components/ErrorFallback";
 
 export type HomeResponse = {
   _id: string;
@@ -54,11 +56,10 @@ export type CollaborationResponse = {
   description: PortableTextBlock;
 };
 
-interface MatchParams {
-  id: string;
-}
-
-interface MatchProps extends RouteComponentProps<MatchParams> {}
+interface MatchProps
+  extends RouteComponentProps<{
+    id: string;
+  }> {}
 
 /*
 TODO:
@@ -66,8 +67,7 @@ TODO:
 ~ add all app state data to app to cache the result so it doesn't recall the api every time
 the user reloads/switch pages
 ~ home page about me paragraph styling
-
-- add error boundaries
+~ add error boundaries
 
 - check for mobile views using polypane
 
@@ -93,36 +93,46 @@ const App = () => {
         <Navbar />
       </div>
 
-      <Switch>
-        <Route path="/" exact>
-          <Home appHomeData={appHomeData} setAppHomeData={setAppHomeData} />
-        </Route>
-        <Route path="/films" exact>
-          <Films
-            appFilmsData={appFilmsData}
-            setAppFilmsData={setAppFilmsData}
+      <ErrorBoundary
+        FallbackComponent={ErrorFallback}
+        onReset={() => {
+          setAppHomeData([]);
+          setAppFilmsData([]);
+          setAppFeatured([]);
+          setAppCollaborationsData([]);
+        }}
+      >
+        <Switch>
+          <Route path="/" exact>
+            <Home appHomeData={appHomeData} setAppHomeData={setAppHomeData} />
+          </Route>
+          <Route path="/films" exact>
+            <Films
+              appFilmsData={appFilmsData}
+              setAppFilmsData={setAppFilmsData}
+            />
+          </Route>
+          <Route
+            path="/films/:id"
+            component={({ match }: MatchProps) => <Film id={match.params.id} />}
           />
-        </Route>
-        <Route
-          path="/films/:id"
-          component={({ match }: MatchProps) => <Film id={match.params.id} />}
-        />
-        <Route path="/other">
-          <Other
-            appCollaborationsData={appCollaborationsData}
-            setAppCollaborationsData={setAppCollaborationsData}
-          />
-        </Route>
-        <Route path="/contact">
-          <Contact />
-        </Route>
-        <Route path="/featured">
-          <Featured
-            appFeaturedData={appFeatured}
-            setAppFeaturedData={setAppFeatured}
-          />
-        </Route>
-      </Switch>
+          <Route path="/other">
+            <Other
+              appCollaborationsData={appCollaborationsData}
+              setAppCollaborationsData={setAppCollaborationsData}
+            />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/featured">
+            <Featured
+              appFeaturedData={appFeatured}
+              setAppFeaturedData={setAppFeatured}
+            />
+          </Route>
+        </Switch>
+      </ErrorBoundary>
     </div>
   );
 };

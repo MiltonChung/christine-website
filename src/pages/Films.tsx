@@ -1,10 +1,10 @@
 import * as React from "react";
+import { FilmResponse } from "../App";
 import { Link } from "react-router-dom";
 import sanityClient from "../lib/sanity";
 import { useAsync } from "../hooks/useAsync";
-import { ReactComponent as RightArrow } from "../assets/icons/right-arrow.svg";
-import { FilmResponse } from "../App";
 import { FComponent } from "../types/common";
+import { ReactComponent as RightArrow } from "../assets/icons/right-arrow.svg";
 
 type FilmsProps = {
   appFilmsData: FilmResponse[];
