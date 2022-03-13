@@ -59,6 +59,8 @@ const Home: FComponent<HomeProps> = ({ appHomeData, setAppHomeData }) => {
         className="home-landing"
         src={mainImage.asset.url}
         alt={mainImage.alt}
+        height={1800}
+        width={2880}
       />
 
       <section className="home-intro">

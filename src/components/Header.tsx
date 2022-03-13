@@ -8,7 +8,7 @@ const Header = () => {
       <img className="profile-photo" src={Profile} alt="Christine profile" />
       <Link className="header-info" to="/">
         <h1>Christine Lin</h1>
-        <h5>filmmaker</h5>
+        <p>filmmaker</p>
       </Link>
     </header>
   );

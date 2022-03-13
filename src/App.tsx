@@ -68,12 +68,10 @@ TODO:
 the user reloads/switch pages
 ~ home page about me paragraph styling
 ~ add error boundaries
+~ lighthouse optimizations
 
 - check for mobile views using polypane
-
 - switch emailjs to christine on deploy
-
-- lighthouse optimizations
 */
 
 const App = () => {
