@@ -90,7 +90,7 @@ const Films: FComponent<FilmsProps> = ({ appFilmsData, setAppFilmsData }) => {
                 </div>
               );
             })
-          : "loading..."}
+          : null}
       </div>
     </main>
   );

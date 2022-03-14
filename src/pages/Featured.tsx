@@ -1,8 +1,8 @@
 import * as React from "react";
 import sanityClient from "../lib/sanity";
-import { useAsync } from "../hooks/useAsync";
 import { FeaturedResponse } from "../App";
 import { FComponent } from "../types/common";
+import { useAsync } from "../hooks/useAsync";
 
 type FeaturedProps = {
   appFeaturedData: FeaturedResponse[];

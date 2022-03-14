@@ -1,10 +1,10 @@
 import * as React from "react";
 import sanityClient from "../lib/sanity";
+import { FComponent } from "../types/common";
 import { useAsync } from "../hooks/useAsync";
+import { CollaborationResponse } from "../App";
 import { PortableText } from "@portabletext/react";
 import { ReactComponent as ExternalLinkIcon } from "../assets/icons/externalLink.svg";
-import { CollaborationResponse } from "../App";
-import { FComponent } from "../types/common";
 
 type OtherProps = {
   appCollaborationsData: CollaborationResponse[];

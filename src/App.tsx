@@ -11,8 +11,8 @@ import { Navbar } from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import { ErrorBoundary } from "react-error-boundary";
 import { PortableTextBlock } from "@portabletext/types";
-import { Switch, Route, RouteComponentProps, Redirect } from "react-router-dom";
 import { ErrorFallback } from "./components/ErrorFallback";
+import { Switch, Route, RouteComponentProps, Redirect } from "react-router-dom";
 
 export type HomeResponse = {
   _id: string;
@@ -60,18 +60,6 @@ interface MatchProps
   extends RouteComponentProps<{
     id: string;
   }> {}
-
-/*
-TODO:
-~ add all app state data to app to cache the result so it doesn't recall the api every time
-the user reloads/switch pages
-~ home page about me paragraph styling
-~ add error boundaries
-~ lighthouse optimizations
-
-- check for mobile views using polypane
-- switch emailjs to christine on deploy
-*/
 
 const App = () => {
   const [appHomeData, setAppHomeData] = React.useState<HomeResponse[]>();

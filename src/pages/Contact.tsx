@@ -46,10 +46,10 @@ const Contact = () => {
         message: data.message,
       };
       await emailjs.send(
-        "service_zv6jbkc",
-        "template_vkyxola",
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
         templateParams,
-        "user_ZBWpd3sfMyrTfSaBnJYM5"
+        process.env.REACT_APP_USER_ID
       );
       reset();
       toastifySuccess();

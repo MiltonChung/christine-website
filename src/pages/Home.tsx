@@ -47,7 +47,9 @@ const Home: FComponent<HomeProps> = ({ appHomeData, setAppHomeData }) => {
   if (!appHomeData)
     return (
       <main id="home">
-        <p>loading...</p>
+        <section className="home-intro">
+          <p>loading...</p>
+        </section>
       </main>
     );
 

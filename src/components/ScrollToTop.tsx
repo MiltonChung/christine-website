@@ -1,7 +1,7 @@
 import * as React from "react";
-import { withRouter } from "react-router-dom";
 import { History } from "history";
 import { FComponent } from "../types/common";
+import { withRouter } from "react-router-dom";
 
 type ScrollToTopProps = {
   history: History;
