@@ -16,6 +16,11 @@ main#home {
     p.home-section__body {
       font-size: 19px;
       margin: 1rem 0;
+
+      a {
+        color: $colors-dark-purple;
+        text-decoration: underline;
+      }
     }
   }
 }
