@@ -55,7 +55,7 @@ const Contact = () => {
       toastifySuccess();
       setLoading(false);
     } catch (e) {
-      console.log(e);
+      throw Error(e);
     }
   };
 
