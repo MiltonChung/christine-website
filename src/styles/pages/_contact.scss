@@ -97,4 +97,107 @@ main#contact {
       }
     }
   }
+
+  .contact-links {
+    h4 {
+      font-weight: 600;
+      margin: 1.5rem 0;
+    }
+
+    .links-container {
+      display: flex;
+      align-items: flex-start;
+      justify-items: center;
+      flex-direction: column;
+      margin-bottom: 2rem;
+
+      .email-link,
+      .vimeo-link {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        a {
+          display: inline-flex;
+          align-items: center;
+          color: $colors-dark-purple;
+          margin-right: 0.5rem;
+          font-size: 18px;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+          & > svg {
+            width: 35px;
+            height: 35px;
+            margin-right: 0.75rem;
+            color: $colors-collab-accent;
+          }
+        }
+      }
+
+      button {
+        padding: 0.5rem 0.7rem;
+        background: $colors-dark-purple;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        svg {
+          width: 14px;
+          height: auto;
+          path {
+            stroke: $colors-white;
+          }
+        }
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .tooltip {
+        position: relative;
+        display: inline-block;
+
+        & .tooltiptext,
+        & .email-tooltip-text {
+          visibility: hidden;
+          width: 89px;
+          background-color: $colors-dark-gray-disabled;
+          color: $colors-white;
+          text-align: center;
+          border-radius: 6px;
+          padding: 8px 10px;
+          position: absolute;
+          z-index: 1;
+          bottom: 120%;
+          left: 50%;
+          margin-left: -42px;
+          opacity: 0;
+          transition: opacity 0.3s;
+          width: fit-content;
+        }
+
+        & .tooltiptext::after,
+        & .email-tooltip-text::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #555 transparent transparent transparent;
+        }
+
+        &:hover .tooltiptext,
+        &:hover .email-tooltip-text {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    }
+  }
 }
