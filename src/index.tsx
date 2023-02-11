@@ -3,7 +3,6 @@ import React from "react";
 import "./styles/main.scss";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,5 +12,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-serviceWorkerRegistration.register();

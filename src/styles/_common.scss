@@ -86,3 +86,40 @@ img {
   justify-content: center;
   margin-top: 5rem;
 }
+
+.Toastify__toast-container {
+  .toastify-custom {
+    font-size: 16px;
+    font-family: $font-family;
+    width: fit-content;
+    min-width: 320px;
+    padding: 0.5rem 0.8rem 0.5rem 1rem;
+
+    @media (max-width: $screen-sm) {
+      min-width: unset;
+      width: 300px;
+    }
+  }
+
+  .submit-form-success {
+    background: $colors-dark-gray;
+    color: $colors-white;
+    font-size: 16px;
+    font-family: $font-family;
+    width: fit-content;
+    padding: 8px 0.8rem 8px 1rem;
+
+    .Toastify__close-button {
+      color: $colors-white;
+      opacity: 0.87;
+    }
+  }
+
+  .error-toast {
+    font-size: 16px;
+  }
+
+  .Toastify__progress-bar {
+    background: $colors-light-blue;
+  }
+}

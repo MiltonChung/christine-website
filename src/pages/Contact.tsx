@@ -1,5 +1,5 @@
 import * as React from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import "react-toastify/dist/ReactToastify.min.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,6 +8,8 @@ import ContactIllustration from "../assets/icons/contact2.svg";
 import { ReactComponent as Copy } from "../assets/icons/copy.svg";
 import { ReactComponent as Email } from "../assets/icons/email.svg";
 import { ReactComponent as Vimeo } from "../assets/icons/vimeo.svg";
+import { Input } from "../components/Input";
+import { Textarea } from "../components/TextArea";
 
 type Inputs = {
   name: string;
@@ -37,7 +39,7 @@ const Contact = () => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: false,
-      className: "submit-feedback success",
+      className: "submit-form-success",
       toastId: "notifyToast",
     });
   };
@@ -46,31 +48,56 @@ const Contact = () => {
     try {
       setLoading(true);
       const templateParams = {
-        to_name: "Christine",
         from_name: data.name,
         reply_to: data.email,
-        subject: data.subject,
         message: data.message,
       };
       await emailjs.send(
         process.env.REACT_APP_SERVICE_ID,
         process.env.REACT_APP_TEMPLATE_ID,
         templateParams,
-        process.env.REACT_APP_USER_ID
+        process.env.REACT_APP_PUBLIC_KEY
       );
-      reset();
+      // reset();
       toastifySuccess();
       setLoading(false);
-    } catch (e) {
-      throw Error(e);
+    } catch {
+      toast.error(
+        `Sorry, something went wrong. Try again or email me directly!`,
+        {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          className: "toastify-custom error-toast",
+        }
+      );
     }
   };
 
   const copyText = () => {
     navigator.clipboard.writeText(EMAIL).then(
-      () => setCopyStatus(true),
-      (err) => {
-        throw Error(`Could not copy text: ${err} `);
+      () => {
+        setCopyStatus(true);
+        setTimeout(() => {
+          setCopyStatus(false);
+        }, 3000);
+      },
+      () => {
+        toast.error(
+          `Sorry, could not copy email. Try again or use the contact form.`,
+          {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            className: "toastify-custom error-toast",
+          }
+        );
       }
     );
   };
@@ -82,80 +109,57 @@ const Contact = () => {
       <div className="contact-body">
         <div className="contact-body-left">
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <label>
-              <p>Full Name:*</p>
-              <input
-                {...register("name", {
-                  required: true,
-                  maxLength: 40,
-                })}
-                placeholder="Your name"
-              />
-            </label>
-            <small className="error">
-              {errors.name?.type === "required" && (
-                <span className="errorMessage">Required</span>
-              )}
-              {errors.name?.type === "maxLength" && (
-                <span className="errorMessage">Max 40 characters</span>
-              )}
-            </small>
+            <Input
+              name="name"
+              label="Full Name"
+              placeholder="Ecma Script"
+              type="text"
+              errors={errors}
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "Please enter your name",
+                },
+                maxLength: {
+                  value: 50,
+                  message: "Please use 50 characters or less",
+                },
+              })}
+            />
 
-            <label>
-              <p>Your Email:*</p>
-              <input
-                {...register("email", {
-                  required: true,
-                  pattern:
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                })}
-                placeholder="example@gmail.com"
-              />
-            </label>
-            <small className="error">
-              {errors.email?.type === "required" && (
-                <span className="errorMessage">Required</span>
-              )}
-              {errors.email?.type === "pattern" && (
-                <span className="errorMessage">
-                  Please enter a valid email address
-                </span>
-              )}
-            </small>
+            <Input
+              name="email"
+              label="Email Address"
+              placeholder="ecmascript@example.com"
+              type="email"
+              errors={errors}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Please enter your email address",
+                },
+                pattern: {
+                  value:
+                    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                  message: "Please enter a valid email address",
+                },
+              })}
+            />
 
-            <label>
-              <p>Subject:*</p>
-              <input
-                {...register("subject", { required: true, minLength: 2 })}
-                placeholder="Job Opening"
-              />
-            </label>
-            <small className="error">
-              {errors.subject?.type === "required" && (
-                <span className="errorMessage">Required</span>
-              )}
-              {errors.subject?.type === "minLength" && (
-                <span className="errorMessage">Subject too short</span>
-              )}
-            </small>
-
-            <label>
-              <p>Message:*</p>
-              <textarea
-                {...register("message", { required: true, minLength: 6 })}
-                placeholder="Hello! I saw that..."
-                cols={30}
-                rows={6}
-              ></textarea>
-            </label>
-            <small className="error error-textbox">
-              {errors.message?.type === "required" && (
-                <span className="errorMessage">Required</span>
-              )}
-              {errors.message?.type === "minLength" && (
-                <span className="errorMessage">Message too short</span>
-              )}
-            </small>
+            <Textarea
+              name="message"
+              label="Message"
+              placeholder="Hello world!"
+              errors={errors}
+              cols={30}
+              rows={8}
+              {...register("message", {
+                required: {
+                  value: true,
+                  message: "Please enter a message",
+                },
+              })}
+            />
 
             {loading ? (
               <button className="primary-button" disabled>
@@ -168,53 +172,50 @@ const Contact = () => {
             )}
           </form>
 
-          <div className="contact-links">
-            <h4>- OR -</h4>
+          <h3 className="contact-divider">- OR -</h3>
 
-            <div className="links-container">
-              <div className="email-link">
-                <a
-                  href={`mailto:${EMAIL}`}
-                  rel="noreferrer"
-                  className="tooltip"
-                >
-                  <Email />
-                  <span>{EMAIL}</span>
-                  <span className="email-tooltip-text">Open Mail app</span>
-                </a>
-                <button
-                  onClick={copyText}
-                  className="tooltip"
-                  aria-label="copy email"
-                >
-                  <Copy className="email" />
-                  <span className="tooltiptext" id="myTooltip">
-                    {copyStatus ? (
-                      <>Copied to clipboard!</>
-                    ) : (
-                      <>Copy to clipboard</>
-                    )}
-                  </span>
-                </button>
-              </div>
+          <div className="links-container">
+            <div className="email-link">
+              <a
+                href={`mailto:${EMAIL}`}
+                rel="noreferrer"
+                className="tooltip-container"
+              >
+                <Email />
+                <span>{EMAIL}</span>
+                <span className="tooltip-popup">Open Mail app</span>
+              </a>
 
-              <div className="vimeo-link">
-                <a
-                  href="https://vimeo.com/christinelin1282"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Vimeo />
-                  https://vimeo.com/christinelin1282
-                </a>
-              </div>
+              <button
+                onClick={copyText}
+                className="tooltip-container copy-button"
+                aria-label="copy email"
+              >
+                <Copy className="email" />
+                <span className="tooltip-popup">
+                  {copyStatus ? "Copied!" : "Copy"}
+                </span>
+              </button>
+            </div>
+
+            <div className="vimeo-link">
+              <a
+                href="https://vimeo.com/christinelin1282"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Vimeo />
+                https://vimeo.com/christinelin1282
+              </a>
             </div>
           </div>
 
           <ToastContainer />
         </div>
 
-        <img src={ContactIllustration} alt="contact illustration" />
+        <div className="contact-body-right">
+          <img src={ContactIllustration} alt="contact illustration" />
+        </div>
       </div>
     </main>
   );
