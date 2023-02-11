@@ -58,7 +58,7 @@ const Contact = () => {
         templateParams,
         process.env.REACT_APP_PUBLIC_KEY
       );
-      // reset();
+      reset();
       toastifySuccess();
       setLoading(false);
     } catch {
