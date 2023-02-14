@@ -8,195 +8,103 @@ main#contact {
   .contact-body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    margin-top: 1rem;
-    column-gap: 2rem;
-    row-gap: 1.5rem;
+    margin-top: 3rem;
+    column-gap: 1.5rem;
 
     @media (max-width: 430px) {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      font-family: $font-family;
-      max-width: 500px;
-
-      ::placeholder {
-        color: rgb(185, 185, 185);
-        opacity: 1;
-      }
-
-      label {
-        margin: 0;
-        margin-top: 0.5rem;
-        p {
-          margin: 0.2rem 0;
-          font-size: 1.2rem;
-        }
-      }
-      input {
-        width: 100%;
-        border-radius: 5px;
-        border: $colors-horizontal-line solid 2px;
-        padding: 0.6rem 0.4rem;
-      }
-      textarea {
-        width: 100%;
-        border-radius: 5px;
-        border: $colors-horizontal-line solid 2px;
-        padding: 0.5rem;
-        margin: 0;
-      }
-      small.error {
-        display: block;
-        color: $colors-error;
-        margin-left: 0.3rem;
-        margin-top: 0.15rem;
-
-        &.error-textbox {
-          margin-top: -0.3rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        button {
-          font-size: 16px;
-          padding: 0.5rem 0.7rem;
-        }
-      }
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-    }
-
-    .Toastify__toast-container {
-      width: fit-content;
-
-      .submit-feedback {
-        background: $colors-dark-gray;
-        color: $colors-white;
-        font-size: 20px;
-        font-family: $font-family;
-        width: fit-content;
-        padding: 8px 0.8rem 8px 1rem;
-        .Toastify__toast-body {
-          margin-right: 5px;
-        }
-      }
-
-      .Toastify__progress-bar {
-        background: $colors-light-blue;
-      }
-
-      .Toastify__close-button--light {
-        color: $colors-white;
-        opacity: 1;
-      }
-    }
-  }
-
-  .contact-links {
-    h4 {
-      font-weight: 600;
-      margin: 1.5rem 0;
-    }
-
-    .links-container {
-      display: flex;
-      align-items: flex-start;
-      justify-items: center;
-      flex-direction: column;
-      margin-bottom: 2rem;
-
-      .email-link,
-      .vimeo-link {
+    .contact-body-left {
+      form {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        max-width: 500px;
+
+        .field-container:not(:last-child) {
+          margin-bottom: 0.75rem;
+        }
+
+        @media (max-width: 768px) {
+          button {
+            font-size: 16px;
+            padding: 0.5rem 0.7rem;
+          }
+        }
+      }
+
+      h3.contact-divider {
+        margin: 1rem 0;
+        font-size: 31px;
+        font-weight: 700;
+      }
+
+      .links-container {
+        display: flex;
+        align-items: flex-start;
+        justify-items: center;
+        flex-direction: column;
         margin-bottom: 2rem;
 
-        a {
-          display: inline-flex;
+        .email-link,
+        .vimeo-link {
+          display: flex;
           align-items: center;
-          color: $colors-dark-purple;
-          margin-right: 0.5rem;
-          font-size: 18px;
+          margin-bottom: 2rem;
 
+          a {
+            display: flex;
+            align-items: center;
+            color: $colors-dark-purple;
+            margin-right: 0.5rem;
+            font-size: 18px;
+            font-weight: 600;
+            flex-shrink: 0;
+
+            &:hover {
+              text-decoration: underline;
+            }
+
+            & > svg {
+              width: 35px;
+              height: 35px;
+              margin-right: 0.75rem;
+              color: $colors-collab-accent;
+            }
+
+            @media (max-width: $screen-sm) {
+              font-size: 14px;
+            }
+          }
+        }
+
+        button.copy-button {
+          padding: 0.4rem 0.5rem;
+          background: $colors-dark-purple;
+          outline: none;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+
+          svg {
+            width: 12px;
+            height: auto;
+            path {
+              stroke: $colors-white;
+            }
+          }
           &:hover {
-            text-decoration: underline;
-          }
-
-          & > svg {
-            width: 35px;
-            height: 35px;
-            margin-right: 0.75rem;
-            color: $colors-collab-accent;
+            opacity: 0.8;
           }
         }
       }
+    }
 
-      button {
-        padding: 0.5rem 0.7rem;
-        background: $colors-dark-purple;
-        outline: none;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-
-        svg {
-          width: 14px;
-          height: auto;
-          path {
-            stroke: $colors-white;
-          }
-        }
-        &:hover {
-          opacity: 0.8;
-        }
-      }
-
-      .tooltip {
-        position: relative;
-        display: inline-block;
-
-        & .tooltiptext,
-        & .email-tooltip-text {
-          visibility: hidden;
-          width: 89px;
-          background-color: $colors-dark-gray-disabled;
-          color: $colors-white;
-          text-align: center;
-          border-radius: 6px;
-          padding: 8px 10px;
-          position: absolute;
-          z-index: 1;
-          bottom: 120%;
-          left: 50%;
-          margin-left: -42px;
-          opacity: 0;
-          transition: opacity 0.3s;
-          width: fit-content;
-        }
-
-        & .tooltiptext::after,
-        & .email-tooltip-text::after {
-          content: "";
-          position: absolute;
-          top: 100%;
-          left: 50%;
-          margin-left: -5px;
-          border-width: 5px;
-          border-style: solid;
-          border-color: #555 transparent transparent transparent;
-        }
-
-        &:hover .tooltiptext,
-        &:hover .email-tooltip-text {
-          visibility: visible;
-          opacity: 1;
-        }
+    .contact-body-right {
+      img {
+        margin-top: 1rem;
+        width: 100%;
+        height: auto;
       }
     }
   }

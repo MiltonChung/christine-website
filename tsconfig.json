@@ -11,8 +11,6 @@
     "target": "es5",
     "jsx": "react",
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noImplicitAny": true,
     "noEmit": true,
     "esModuleInterop": true
