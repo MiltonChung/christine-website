@@ -1,20 +1,19 @@
 import * as React from "react";
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
+import { Input } from "../components/Input";
+import { Textarea } from "../components/TextArea";
 import "react-toastify/dist/ReactToastify.min.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { LoadingIcon } from "../components/LoadingIcon";
 import ContactIllustration from "../assets/icons/contact2.svg";
 import { ReactComponent as Copy } from "../assets/icons/copy.svg";
 import { ReactComponent as Email } from "../assets/icons/email.svg";
 import { ReactComponent as Vimeo } from "../assets/icons/vimeo.svg";
-import { Input } from "../components/Input";
-import { Textarea } from "../components/TextArea";
 
 type Inputs = {
   name: string;
   email: string;
-  subject: string;
   message: string;
 };
 
@@ -23,6 +22,7 @@ const EMAIL = "christinelin1282@gmail.com";
 const Contact = () => {
   const [loading, setLoading] = React.useState(false);
   const [copyStatus, setCopyStatus] = React.useState(false);
+  const [formSubmitted, setFormSubmitted] = React.useState(false);
 
   const {
     register,
@@ -61,6 +61,7 @@ const Contact = () => {
       reset();
       toastifySuccess();
       setLoading(false);
+      setFormSubmitted(true);
     } catch {
       toast.error(
         `Sorry, something went wrong. Try again or email me directly!`,
@@ -111,8 +112,7 @@ const Contact = () => {
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <Input
               name="name"
-              label="Full Name"
-              placeholder="Ecma Script"
+              label="Your Name"
               type="text"
               errors={errors}
               {...register("name", {
@@ -130,7 +130,6 @@ const Contact = () => {
             <Input
               name="email"
               label="Email Address"
-              placeholder="ecmascript@example.com"
               type="email"
               errors={errors}
               {...register("email", {
@@ -149,7 +148,6 @@ const Contact = () => {
             <Textarea
               name="message"
               label="Message"
-              placeholder="Hello world!"
               errors={errors}
               cols={30}
               rows={8}
@@ -164,6 +162,10 @@ const Contact = () => {
             {loading ? (
               <button className="primary-button" disabled>
                 <LoadingIcon />
+              </button>
+            ) : formSubmitted ? (
+              <button type="submit" disabled className="primary-button">
+                Thank you!
               </button>
             ) : (
               <button type="submit" className="primary-button">

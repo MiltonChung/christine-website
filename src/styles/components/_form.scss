@@ -69,13 +69,13 @@
     }
 
     &:disabled {
-      background-color: #9e9e9e;
+      background-color: $colors-disabled-button;
       cursor: not-allowed;
     }
   }
 
-  .input-disabled {
-    background-color: #9e9e9e;
+  &.input-disabled {
+    background: $colors-disabled-button;
     cursor: not-allowed;
   }
 }
@@ -119,7 +119,7 @@
     }
 
     &:disabled {
-      background-color: #9e9e9e;
+      background-color: $colors-disabled-button;
       cursor: not-allowed;
     }
 
@@ -136,8 +136,8 @@
     }
   }
 
-  .textarea-disabled {
-    background-color: #9e9e9e;
+  &.textarea-disabled {
+    background-color: $colors-disabled-button;
     cursor: not-allowed;
   }
 }
