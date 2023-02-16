@@ -39,6 +39,16 @@ header {
         font-size: 40px;
         line-height: 1.5rem;
       }
+      p {
+        font-size: 24px;
+      }
+    }
+  }
+
+  @media (max-width: $screen-xs) {
+    .header-info p {
+      font-size: 19px;
+      margin-top: 0.25rem;
     }
   }
 }
